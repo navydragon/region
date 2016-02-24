@@ -14,12 +14,12 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
 
 		<!-- CORE CSS -->
-		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="{{ URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 		
 		<!-- THEME CSS -->
-		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+		<link href="{{ URL::asset('assets/css/essentials.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ URL::asset('assets/css/layout.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ URL::asset('assets/css/color_scheme/green.css') }}" rel="stylesheet" type="text/css" id="color_scheme" />
 
 	</head>
 	<!--
@@ -66,7 +66,7 @@
 							</a>
 							<ul><!-- submenus -->
 								<li><a href="page-invoice.html">Задания</a></li>
-								<li><a href="page-login.html">Анкеты</a></li>
+								<li><a href="/surveys">Анкеты</a></li>
 								<li><a href="page-register.html">Тестирования</a></li>
 							</ul>
 						</li>
@@ -106,7 +106,7 @@
 
 				<!-- Logo -->
 				<span class="logo pull-left">
-					<img src="assets/images/rzd.png" alt="admin panel"  />
+					<img src="{{ URL::asset('assets/images/rzd.png') }}" alt="admin panel"  />
 				</span>
 
 				<!--<form method="get" action="page-search.html" class="search pull-left hidden-xs">
@@ -121,7 +121,7 @@
 						<!-- USER OPTIONS -->
 						<li class="dropdown pull-left">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-								<img class="user-avatar" alt="" src="assets/images/noavatar.jpg" height="34" /> 
+								<img class="user-avatar" alt="" src="{{ URL::asset('assets/images/noavatar.jpg') }}" height="34" /> 
 								<span class="user-name">
 									<span class="hidden-xs">
 										John Doe <i class="fa fa-angle-down"></i>
