@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+	
 
 	@foreach ($surveys as $survey)
 		<h2><a href="/surveys/{{ $survey->id }}">{{ $survey->title }}</h2></a>

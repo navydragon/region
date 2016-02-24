@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Survey;
+use App\Http\Requests;
+use App\Http\Requests\SurveyRequest;
 use App\Http\Controllers\Controller;
-use Request;
+use Illuminate\Htpp\Request;
+
 
 
 class SurveysController extends Controller
@@ -30,13 +33,24 @@ class SurveysController extends Controller
     	return view('surveys.create'); 
     }
 
-    public function store()
+    public function store(SurveyRequest $request)
     {
-    	$input = Request::all(); 
-    	
-    	//$survey = new Survey;
-    	//$survey->title = $input['title'];
-    	Survey::create($input);
+
+    	Survey::create($request->all());
+        //$survey = new Survey;
+        //$survey->title = $input['title'];
     	return redirect('surveys');
+    }
+    public function edit($id)
+    {
+        $survey = Survey::findOrFail($id);
+        return view('surveys.edit',compact('survey'));
+    }
+
+    public function update($id,SurveyRequest $request)
+    {
+        $survey = Survey::findOrFail($id);
+        $survey->update($request->all());
+        return redirect('surveys');
     }
 }

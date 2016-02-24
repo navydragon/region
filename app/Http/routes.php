@@ -18,10 +18,7 @@ Route::get('/', function () {
 Route::get('about','PagesController@about');
 Route::get('contact','PagesController@contact');
 
-Route::get('surveys', 'SurveysController@index');
-Route::get('surveys/create', 'SurveysController@create');
-Route::get('surveys/{id}', 'SurveysController@show');
-Route::post('surveys', 'SurveysController@store');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -33,6 +30,12 @@ Route::post('surveys', 'SurveysController@store');
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => ['web']], function () 
+{
+    //Route::get('surveys', 'SurveysController@index');
+	//Route::get('surveys/create', 'SurveysController@create');
+	//Route::get('surveys/{id}', 'SurveysController@show');
+	//Route::post('surveys', 'SurveysController@store');
+	//Route::get('surveys/{id}/edit', 'SurveysController@edit');
+	Route::resource('surveys','SurveysController');
 });
