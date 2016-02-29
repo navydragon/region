@@ -1,4 +1,4 @@
-@extends('app')
+@extends('admin')
 
 @section('title')
 Редактирование анкеты "{{ $survey->title }}"
@@ -6,7 +6,7 @@
 
 @section('content')
 
-	{!! Form::model($survey, ['method' => 'PATCH','url' => 'surveys/' . $survey->id]) !!}
+	{!! Form::model($survey, ['method' => 'PATCH','url' => '/admin/surveys/' . $survey->id]) !!}
 			@include('surveys.form',['submitButtonText' => 'Обновить'])
 	{!! Form::close() !!}
 

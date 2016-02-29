@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\SurveyRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Htpp\Request;
-
+use Auth;
 
 
 class SurveysController extends Controller
@@ -36,10 +36,13 @@ class SurveysController extends Controller
     public function store(SurveyRequest $request)
     {
 
-    	Survey::create($request->all());
+    	//Survey::create($request->all());
+        $survey = new Survey ($request->all());
+        //$request->user()->survey()->save($survey);
+        Auth::user()->surveys()->save($survey);
         //$survey = new Survey;
         //$survey->title = $input['title'];
-    	return redirect('surveys');
+    	return redirect('admin/surveys');
     }
     public function edit($id)
     {
@@ -51,6 +54,6 @@ class SurveysController extends Controller
     {
         $survey = Survey::findOrFail($id);
         $survey->update($request->all());
-        return redirect('surveys');
+        return redirect('admin/surveys');
     }
 }

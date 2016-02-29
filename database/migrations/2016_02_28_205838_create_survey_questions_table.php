@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSurveysTable extends Migration
+class CreateSurveyQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,15 @@ class CreateSurveysTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveys', function (Blueprint $table) {
+        Schema::create('survey_questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('title');
-            $table->string('description');
-            $table->integer('author');
+            $table->integer('survey_id')->unsigned()->index();
+            $table->text('body');
             $table->timestamps();
-            $table->timestamp('published_at');
-
-            $table->foreign('user_id')
+           
+            $table->foreign('survey_id')
                   ->references('id')
-                  ->on('users')
+                  ->on('surveys')
                   ->onDelete('cascade');
         });
     }
@@ -35,6 +32,6 @@ class CreateSurveysTable extends Migration
      */
     public function down()
     {
-        Schema::drop('surveys');
+        Schema::drop('survey_questions');
     }
 }

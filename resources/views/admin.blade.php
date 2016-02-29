@@ -49,7 +49,7 @@
 				<nav id="sideNav"><!-- MAIN MENU -->
 					<ul class="nav nav-list">
 						<li class="active"><!-- dashboard -->
-							<a class="dashboard" href="/">
+							<a class="dashboard" href="/admin">
 								<i class="main-icon fa fa-dashboard"></i> <span>Администрирование</span>
 							</a>
 						</li>
@@ -66,7 +66,7 @@
 							</a>
 							<ul><!-- submenus -->
 								<li><a href="page-invoice.html">Задания</a></li>
-								<li><a href="/surveys">Анкеты</a></li>
+								<li><a href="/admin/surveys">Анкеты</a></li>
 								<li><a href="page-register.html">Тестирования</a></li>
 							</ul>
 						</li>
@@ -124,7 +124,7 @@
 								<img class="user-avatar" alt="" src="{{ URL::asset('assets/images/noavatar.jpg') }}" height="34" /> 
 								<span class="user-name">
 									<span class="hidden-xs">
-										John Doe <i class="fa fa-angle-down"></i>
+										{{ Auth::user()->name }} <i class="fa fa-angle-down"></i>
 									</span>
 								</span>
 							</a>
@@ -147,7 +147,7 @@
 									<a href="page-lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
 								</li>
 								<li><!-- logout -->
-									<a href="page-login.html"><i class="fa fa-power-off"></i> Log Out</a>
+									<a href="{{ url('/logout') }}"><i class="fa fa-power-off"></i> Log Out</a>
 								</li>
 							</ul>
 						</li>
@@ -184,9 +184,9 @@
 
 	
 		<!-- JAVASCRIPT FILES -->
-		<script type="text/javascript">var plugin_path = 'assets/plugins/';</script>
-		<script type="text/javascript" src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="assets/js/app.js"></script>
+		<script type="text/javascript">var plugin_path = '{{ URL::asset('assets/plugins') }}/';</script>
+		<script type="text/javascript" src="{{ URL::asset('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
+		<script type="text/javascript" src="{{ URL::asset('assets/js/app.js') }}"></script>
 		
 		
 	</body>

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-}); 
+
 
 Route::get('about','PagesController@about');
 Route::get('contact','PagesController@contact');
@@ -37,5 +35,23 @@ Route::group(['middleware' => ['web']], function ()
 	//Route::get('surveys/{id}', 'SurveysController@show');
 	//Route::post('surveys', 'SurveysController@store');
 	//Route::get('surveys/{id}/edit', 'SurveysController@edit');
-	Route::resource('surveys','SurveysController');
+	Route::auth();
+	Route::get('/', function () {return view('welcome');}); 
+
+
 });
+
+
+
+Route::group(['middleware' => ['web','auth']], function () 
+{
+	Route::get('/home', 'HomeController@index');
+	Route::get('/admin', function () {return view('admin/index');});
+
+	Route::resource('admin/surveys','SurveysController');
+
+	Route::post('admin/surveys/{survey}/survey_questions', 'Survey_questionsController@store');
+	Route::get('admin/survey_questions/{survey_question}/edit', 'Survey_questionsController@edit');
+	Route::patch('admin/survey_questions/{survey_question}', 'Survey_questionsController@update');
+});
+

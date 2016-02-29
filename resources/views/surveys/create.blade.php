@@ -1,4 +1,4 @@
-@extends('app')
+@extends('admin')
 
 @section('title')
 Создание новой анкеты
@@ -6,7 +6,7 @@
 
 @section('content')
 
-	{!! Form::open(array('url' => 'surveys')) !!}
+	{!! Form::open(array('url' => 'admin/surveys')) !!}
 		@include('surveys.form',['submitButtonText' => 'Создать'])
 	{!! Form::close() !!}
 

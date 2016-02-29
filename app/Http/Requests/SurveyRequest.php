@@ -30,11 +30,12 @@ class SurveyRequest extends Request
     }
 
     public function messages()
-{
-    return [
-        'title.required' => 'Поле Имя анкеты должно быть заполнено ',
-        'title.min' => 'Поле Имя анкеты должно состоять как минимум из 3-х символов',
-        'description.required' => 'Поле Описание должно быть заполнено',
-    ];
-}
+    {
+        return 
+        [
+            'title.required' => 'Поле Имя анкеты должно быть заполнено ',
+            'title.min' => 'Поле Имя анкеты должно состоять как минимум из 3-х символов',
+            'description.required' => 'Поле Описание должно быть заполнено',
+        ];
+    }
 }

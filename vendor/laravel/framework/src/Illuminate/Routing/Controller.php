@@ -32,7 +32,7 @@ abstract class Controller
     {
         $this->middleware[$middleware] = &$options;
 
-        return new ControllerMiddlewareOptions($options);
+        //  return new ControllerMiddlewareOptions($options);
     }
 
     /**
