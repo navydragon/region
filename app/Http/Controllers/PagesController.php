@@ -11,7 +11,7 @@ class PagesController extends Controller
 {
     public function about ()
     {
-    	$people = ['Vasya','Petya'];
+        $people = ['Vasya','Petya'];
 
     	return view('pages.about',compact('people'));
     }
