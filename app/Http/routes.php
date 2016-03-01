@@ -49,10 +49,14 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::get('/admin', function () {return view('admin/index');});
 
 	Route::resource('admin/commissions','CommissionsController');
+	
 	Route::resource('admin/surveys','SurveysController');
 
 	Route::post('admin/surveys/{survey}/survey_questions', 'Survey_questionsController@store');
 	Route::get('admin/survey_questions/{survey_question}/edit', 'Survey_questionsController@edit');
 	Route::patch('admin/survey_questions/{survey_question}', 'Survey_questionsController@update');
+	Route::delete('admin/survey_questions/{survey_question}', 'Survey_questionsController@destroy');
+
+	Route::post('admin/commissions/{commission}/commission_stages', 'Commission_stagesController@store');
 });
 

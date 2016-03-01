@@ -14,13 +14,17 @@
 			<h4>Вопросы анкеты:</h4>
 			<ul class="list-group">
 				@foreach ($survey->survey_questions as $survey_question)
-					<li class="list-group-item">
-						<div class="btn-group">
-								<a href='/admin/survey_questions/{{ $survey_question->id }}/edit' title="Редактировать" class="btn btn-default btn-sm"><span class="fa fa-lg fa-edit"></span></a>
-								<a href='#' title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></a>
-						</div>
-						<span>{{ $survey_question->body }}</span>
-					</li>
+					{!! Form::open(array('url' => 'admin/survey_questions/'.$survey_question->id.'','method' => 'DELETE')) !!}
+						<li class="list-group-item">
+							<div class="btn-group">
+									<a href='/admin/survey_questions/{{ $survey_question->id }}/edit' title="Редактировать" class="btn btn-default btn-sm"><span class="fa fa-lg fa-edit"></span></a>
+									 
+										<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
+
+							</div>
+							<span>{{ $survey_question->body }}</span>
+						</li>
+					{!! Form::close() !!}
 				@endforeach
 			</ul>
 			<hr>

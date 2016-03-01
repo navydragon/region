@@ -15,8 +15,7 @@ class Survey_questionsController extends Controller
     {
         $survey_question = new Survey_question ($request->all());
         $survey->survey_questions()->save($survey_question);
-        $message = urlencode(iconv("CP1251","UTF-8",'Вопрос успешно добавлен!'));
-        flash()->success($message);
+        flash()->success('Р’РѕРїСЂРѕСЃ СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ!');
     	return back();
     }
 
@@ -31,9 +30,17 @@ class Survey_questionsController extends Controller
         $survey_question = Survey_question::findOrFail($id);
         $survey_question->update($request->all());
 
-        $message = urlencode(iconv("CP1251","UTF-8",'Вопрос успешно изменен!'));
-        flash()->success($message);
+        flash()->success('Р’РѕРїСЂРѕСЃ СѓСЃРїРµС€РЅРѕ РѕР±РЅРѕРІР»РµРЅ!');
 
         return redirect('admin/surveys/'.$survey_question->survey_id.'/');
+    }
+
+     public function destroy($id)
+    {
+        $survey_question = Survey_question::findOrFail($id);
+        $survey = $survey_question->survey->id;
+        $survey_question->delete();
+        flash()->success('Р’РѕРїСЂРѕСЃ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ!');
+        return redirect('admin/surveys/'.$survey.'');
     }
 }

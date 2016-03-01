@@ -135,6 +135,7 @@ address, table, fieldset, form {
 	margin-bottom: 30px; 
 }
 
+.list-group > form {margin-bottom: 0px; }
 :active,
 :focus { outline: none !important; }
 

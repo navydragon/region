@@ -28,5 +28,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Survey');
     }
+
+    public function commissions()
+    {
+        return $this->hasMany('App\Commission');
+    }
 }
 

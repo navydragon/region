@@ -12,5 +12,10 @@ class Commission extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+    public function commission_stages()
+    {
+        return $this->hasMany('App\Commission_stage');
+    }
 }
 

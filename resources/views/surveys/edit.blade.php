@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Редактирование анкеты "{{ $survey->title }}"
+	Редактирование анкеты "{{ $survey->title }}"
 @stop
 
 @section('content')

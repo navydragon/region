@@ -10,14 +10,16 @@
 		<h4>Доступные комиссии:</h4>
 		<ul class="list-group">
 		@foreach ($commissions as $commission)
-				<li class="list-group-item">
-					<div class="btn-group">
-						<a href='/admin/commissions/{{ $commission->id }}/edit' title="Редактировать" class="btn btn-default btn-sm"><span class="fa fa-lg fa-edit"></span></a>
-						<a href='#' title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></a>
-					</div>
-					<span><a href="/admin/commissions/{{ $commission->id }}"><strong>{{ $commission->title }}</strong></a> - {{$commission->description}} </span>
-					<span class="pull-right">Автор: {{$commission->user->name}}</span>
-				</li>
+				{!! Form::open(array('url' => 'admin/commissions/'.$commission->id.'','method' => 'DELETE')) !!}
+					<li class="list-group-item">
+								<div class="btn-group">
+									<a href='/admin/commissions/{{ $commission->id }}/edit' title="Редактировать" class="btn btn-default btn-sm"><span class="fa fa-lg fa-edit"></span></a>
+									<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
+								</div>
+								<span><a href="/admin/commissions/{{ $commission->id }}"><strong>{{ $commission->title }}</strong></a> - {{$commission->description}} </span>
+								<span class="pull-right">Организатор: {{$commission->user->name}}</span>
+					</li>
+				{!! Form::close() !!}
 		@endforeach
 		</ul>
 	</div>

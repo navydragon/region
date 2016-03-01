@@ -43,16 +43,13 @@ class SurveysController extends Controller
         Auth::user()->surveys()->save($survey);
         //$survey = new Survey;
         //$survey->title = $input['title'];
-         $message = urlencode(iconv("CP1251","UTF-8",'Анкета успешно создана!'));
-         flash()->success($message);
+         flash()->success('РђРЅРєРµС‚Р° СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅР°!');
 
     	return redirect('admin/surveys');
     }
     public function edit($id)
     {
         $survey = Survey::findOrFail($id);
-        $message = urlencode(iconv("CP1251","UTF-8",'Анкета успешно изменена!'));
-        flash()->success($message);
         return view('surveys.edit',compact('survey'));
     }
 
@@ -60,6 +57,14 @@ class SurveysController extends Controller
     {
         $survey = Survey::findOrFail($id);
         $survey->update($request->all());
+        flash()->success('РђРЅРєРµС‚Р° СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅР°!');
+        return redirect('admin/surveys');
+    }
+
+    public function destroy($id)
+    {
+        Survey::findOrFail($id)->delete();
+        flash()->success('РђРЅРєРµС‚Р° СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅР°!');
         return redirect('admin/surveys');
     }
 }
