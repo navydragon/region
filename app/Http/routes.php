@@ -48,6 +48,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::get('/home', 'HomeController@index');
 	Route::get('/admin', function () {return view('admin/index');});
 
+	Route::resource('admin/commissions','CommissionsController');
 	Route::resource('admin/surveys','SurveysController');
 
 	Route::post('admin/surveys/{survey}/survey_questions', 'Survey_questionsController@store');

@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('layouts.admin')
 
 @section('title')
 Редактирование вопроса анкеты "{{ $survey_question->body }}"

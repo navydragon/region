@@ -53,7 +53,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="calendar.html">
+							<a href="/admin/commissions">
 								<i class="main-icon fa fa-table"></i>
 								<span class="label label-success pull-right">2</span> <span>Комиссии</span>
 							</a>
@@ -64,9 +64,9 @@
 								<i class="main-icon fa fa-book"></i> <span>Мероприятия</span>
 							</a>
 							<ul><!-- submenus -->
-								<li><a href="page-invoice.html">Задания</a></li>
+								<li><a href="#">Задания</a></li>
 								<li><a href="/admin/surveys">Анкеты</a></li>
-								<li><a href="page-register.html">Тестирования</a></li>
+								<li><a href="#">Тестирования</a></li>
 							</ul>
 						</li>
 						
