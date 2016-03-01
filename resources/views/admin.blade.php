@@ -2,7 +2,6 @@
 <html lang="ru-RU">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<title>Администрирование - @yield('title')</title>
 		<meta name="description" content="" />
 		<meta name="Author" content="Nikolay Grinchar" />
@@ -170,7 +169,7 @@
 					<h1>@yield('title')</h1>
 				</header>
 				<div id="content" class="padding-20">
-
+					@include('flash::message')
 					@yield('content')
 
 				</div>

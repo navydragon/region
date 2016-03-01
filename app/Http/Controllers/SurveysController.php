@@ -9,6 +9,7 @@ use App\Http\Requests\SurveyRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Htpp\Request;
 use Auth;
+use Session;
 
 
 class SurveysController extends Controller
@@ -22,7 +23,7 @@ class SurveysController extends Controller
 
     public function show($id)
     {
-    	
+
     	$survey = Survey::findOrFail($id);
 
     	return view('surveys.show',compact('survey')); 
@@ -42,11 +43,16 @@ class SurveysController extends Controller
         Auth::user()->surveys()->save($survey);
         //$survey = new Survey;
         //$survey->title = $input['title'];
+         $message = urlencode(iconv("CP1251","UTF-8",'Анкета успешно создана!'));
+         flash()->success($message);
+
     	return redirect('admin/surveys');
     }
     public function edit($id)
     {
         $survey = Survey::findOrFail($id);
+        $message = urlencode(iconv("CP1251","UTF-8",'Анкета успешно изменена!'));
+        flash()->success($message);
         return view('surveys.edit',compact('survey'));
     }
 
