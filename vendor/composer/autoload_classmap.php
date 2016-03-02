@@ -9,6 +9,7 @@ return array(
     'CreateCommissionStagesTable' => $baseDir . '/database/migrations/2016_03_01_211449_create_commission_stages_table.php',
     'CreateCommissionsTable' => $baseDir . '/database/migrations/2016_03_01_120506_create_commissions_table.php',
     'CreateEventsTable' => $baseDir . '/database/migrations/2016_03_01_225559_create_events_table.php',
+    'CreateFilesTable' => $baseDir . '/database/migrations/2016_03_02_221133_create_files_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSurveyQuestionsTable' => $baseDir . '/database/migrations/2016_02_28_205838_create_survey_questions_table.php',
     'CreateSurveysTable' => $baseDir . '/database/migrations/2016_02_23_220010_create_surveys_table.php',

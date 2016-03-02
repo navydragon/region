@@ -17,8 +17,8 @@ class CreateCommissionStagesTable extends Migration
             $table->integer('commission_id')->unsigned()->index();
             $table->string('title');
             $table->text('description');
-            $table->timestamp('start_at');
-            $table->timestamp('end_at');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->timestamps();
            
             $table->foreign('commission_id')

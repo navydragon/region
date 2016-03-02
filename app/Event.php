@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+	protected  $fillable = ['commission_stage_id','type','type_id',]; 
+
     public function scopeOfType($query, $type)
     {
         return $query->whereType($type);

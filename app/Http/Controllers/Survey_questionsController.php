@@ -35,7 +35,7 @@ class Survey_questionsController extends Controller
         return redirect('admin/surveys/'.$survey_question->survey_id.'/');
     }
 
-     public function destroy($id)
+    public function destroy($id)
     {
         $survey_question = Survey_question::findOrFail($id);
         $survey = $survey_question->survey->id;

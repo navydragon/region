@@ -22,7 +22,9 @@
 										<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
 
 							</div>
-							<span>{{ $commission_stage->title }}</span>
+							<span>{{ $commission_stage->title }} (Мероприятий: {{  $commission_stage->events->count() }})
+									
+							</span>
 						</li>
 					{!! Form::close() !!}
 				@endforeach
@@ -32,7 +34,7 @@
 				<div class="col-md-6">
 					<h4>Добавить новый этап:</h4>
 
-					{!! Form::open(array('url' => 'admin/commissions/'.$commission->id.'/commission_stages')) !!}
+					{!! Form::open(array('url' => 'admin/commissions/'.$commission->id.'/commission_stages','files'=>true)) !!}
 						<div class="form-group">
 							{!! Form::label('title', 'Название этапа:') !!}
 						    {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -49,7 +51,11 @@
 							{!! Form::label('end_at', 'Конец этапа:') !!}
 						    {!! Form::input('date','end_at', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="form-group col-md-6" >
+						<div class="form-group col-md-6	">
+							{!! Form::label('file', 'Добавить файл:') !!}
+							{!! Form::file('file') !!}
+						</div>
+						<div class="form-group col-md-12" >
 						    {!! Form::submit('Добавить', ['class' => 'btn btn-info form-control']) !!}
 						</div>
 					{!! Form::close() !!}

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,12 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('commission_stage_id')->unsigned()->index();
+            $table->string('title');
+            $table->string('path');
             $table->string('type');
-            $table->integer('type_id');
             $table->timestamps();
-
-            $table->foreign('commission_stage_id')
-                  ->references('id')
-                  ->on('commission_stages')
-                  ->onDelete('cascade');
         });
     }
 
@@ -33,6 +28,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('files');
     }
 }

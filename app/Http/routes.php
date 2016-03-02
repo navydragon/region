@@ -59,8 +59,8 @@ Route::group(['middleware' => ['web','auth']], function ()
 
 	Route::get('admin/commission_stages/{commission_stage}/edit','Commission_stagesController@edit');
 	Route::patch('admin/commission_stages/{commission_stage}','Commission_stagesController@update');
-	Route::post('admin/commissions/{commission}/commission_stages', 'Commission_stagesController@store');
-
+	Route::post('admin/commissions/{commission}/commission_stages', 'Commission_stagesController@store'); 
+	Route::delete('admin/commission_stages/{commission_stage}', 'Commission_stagesController@destroy');
 
 });
 
