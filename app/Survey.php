@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Event;
 
 class Survey extends Model
 {
@@ -18,6 +18,14 @@ class Survey extends Model
     {
         return $this->hasMany('App\Survey_question');
     }
+
+    public function find_in_stage($stage)
+    {
+    	
+    	$event = Event::where('type', '=', 'survey')->where('type_id', '=',$this->id)->count();
+    	if ($event>0) {return true;}else{return false;}
+    }
+
 }
 
 

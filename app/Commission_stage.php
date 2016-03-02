@@ -12,4 +12,9 @@ class Commission_stage extends Model
     {
     	return $this->belongsTo('App\Commission');
     }
+
+    public function events()
+    {
+        return $this->hasMany('App\Event');
+    }
 }

@@ -26,8 +26,8 @@ class Commission_stageRequest extends Request
         return [
             'title' => 'required|min:3',
             'description' => 'required',
-            'start_at' => 'required',
-            'end_at' => 'required',
+          //  'start_at' => 'required',
+          //  'end_at' => 'required',
         ];
     }
 
@@ -39,7 +39,7 @@ class Commission_stageRequest extends Request
             'description.required' => 'Введите описание этапа',
             'title.min' => 'Название этапа должно состоять как минимум из 3-х символов',
             'start_at.required' => 'Введите дату начала этапа',
-            'start_end.required' => 'Введите дату окончания этапа',
+            'end_at.required' => 'Введите дату окончания этапа',
         ];
     }
 }

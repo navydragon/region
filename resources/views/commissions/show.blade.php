@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Анкета "{{ $commission->title }}"
+Комиссия "{{ $commission->title }}"
 @stop
 
 @section('content')
@@ -41,21 +41,21 @@
 							{!! Form::label('description', 'Описание этапа:') !!}
 						    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-6">
 							{!! Form::label('start_at', 'Начало этапа:') !!}
 						    {!! Form::input('date','start_at', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-6">
 							{!! Form::label('end_at', 'Конец этапа:') !!}
 						    {!! Form::input('date','end_at', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="form-group">
+						<div class="form-group col-md-6" >
 						    {!! Form::submit('Добавить', ['class' => 'btn btn-info form-control']) !!}
 						</div>
 					{!! Form::close() !!}
 
-					@include('errors.list')
 				</div>
 			</div>
+			@include('errors.list')
 
 @stop
