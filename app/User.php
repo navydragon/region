@@ -33,5 +33,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Commission');
     }
+
+    public function files()
+    {
+        return $this->hasMany('App\File');
+    }
 }
 

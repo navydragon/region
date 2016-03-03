@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFilesTable extends Migration
+class CreateFileBindsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,16 @@ class CreateFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('file_binds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('title');
-            $table->string('path');
-            $table->string('type');
+            $table->integer('file_id')->unsigned();
+            $table->string('bind_type');
+            $table->integer('type_id');
             $table->timestamps();
 
-            $table->foreign('user_id')
+            $table->foreign('file_id')
                   ->references('id')
-                  ->on('users')
+                  ->on('files')
                   ->onDelete('cascade');
         });
     }
@@ -34,6 +33,6 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('files');
+        Schema::drop('file_binds');
     }
 }

@@ -17,4 +17,12 @@ class Commission_stage extends Model
     {
         return $this->hasMany('App\Event');
     }
+
+    public function find_in_file_binds()
+    {
+        
+        $binds = File_bind::where('bind_type', '=', 'commission_stage')->where('type_id', '=',$this->id);
+        return $binds;
+    }
+
 }

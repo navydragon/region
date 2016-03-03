@@ -30,7 +30,7 @@ class File extends Model
 	      $file->move($destinationPath, $fileName); // uploading file to given path
 	      // sending back with message
 	      //Session::flash('success', 'Upload successfully'); 
-	      return back();
+	      return  $destinationPath.'/'.$fileName;
 	    }
 	    else {
 	      // sending back with error message.
@@ -40,4 +40,9 @@ class File extends Model
 	    }
 	//  }
 	}
+
+	public function file_binds()
+    {
+        return $this->hasMany('App\File_bind');
+    }
 }

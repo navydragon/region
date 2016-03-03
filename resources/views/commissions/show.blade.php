@@ -22,7 +22,7 @@
 										<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
 
 							</div>
-							<span>{{ $commission_stage->title }} (Мероприятий: {{  $commission_stage->events->count() }})
+							<span>{{ $commission_stage->title }} (Мероприятий: {{  $commission_stage->events->count() }}, Файлов: {{ $commission_stage->find_in_file_binds()->count() }} )
 									
 							</span>
 						</li>
@@ -51,12 +51,14 @@
 							{!! Form::label('end_at', 'Конец этапа:') !!}
 						    {!! Form::input('date','end_at', null, ['class' => 'form-control']) !!}
 						</div>
-						<div class="form-group col-md-6	">
-							{!! Form::label('file', 'Добавить файл:') !!}
+						<h4>Добавить файл:</h4>
+						<div class="form-group">
+							{!! Form::label('filename', 'Название файла:') !!}
+							{!! Form::text('filename') !!}
 							{!! Form::file('file') !!}
 						</div>
 						<div class="form-group col-md-12" >
-						    {!! Form::submit('Добавить', ['class' => 'btn btn-info form-control']) !!}
+						    {!! Form::submit('Добавить этап', ['class' => 'btn btn-info form-control']) !!}
 						</div>
 					{!! Form::close() !!}
 

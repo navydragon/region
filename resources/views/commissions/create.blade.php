@@ -6,7 +6,7 @@
 
 @section('content')
 
-    {!! Form::open(array('url' => 'admin/commissions')) !!}
+    {!! Form::open(array('url' => 'admin/commissions','files'=>true)) !!}
     @include('commissions.form',['submitButtonText' => 'Создать'])
     {!! Form::close() !!}
 

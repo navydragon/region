@@ -10,21 +10,33 @@ use App\Commission;
 use App\Event;
 use App\Commission_stage;
 use App\File;
+use App\File_bind;
+use Auth;
 
 class Commission_stagesController extends Controller
 {
     public function store(Request $request, Commission $commission,Commission_stageRequest $request)
     {
         //создаем этап
-      //  $commission_stage = new Commission_stage ($request->all());
-      //  $commission->commission_stages()->save($commission_stage);
-
+        $commission_stage = new Commission_stage ($request->all());
+        $commission->commission_stages()->save($commission_stage);
         //загружаем файл
-        if ($request->has('file'))
+        if ($request->file<>'')
         {
             $source = $request->file;
             $file = new File;
-            $file->upload($source);
+            $path = $file->upload($source);
+            $file->user_id = Auth::user()->id;
+            $file->title = $request->filename;
+            $file->type = substr($path, strrpos($path, '.') + 1);
+            $file->path = $path;
+            $file->save();
+
+            $file_bind = new File_bind;
+            $file_bind->bind_type = 'commission_stage';
+            $file_bind->type_id =  $commission_stage->id;
+            $file->file_binds()->save($file_bind);
+
         }
 
         flash()->success('Этап успешно создан!');
