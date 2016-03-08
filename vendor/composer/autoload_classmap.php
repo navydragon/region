@@ -14,6 +14,8 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSurveyQuestionsTable' => $baseDir . '/database/migrations/2016_02_28_205838_create_survey_questions_table.php',
     'CreateSurveysTable' => $baseDir . '/database/migrations/2016_02_23_220010_create_surveys_table.php',
+    'CreateTasksTable' => $baseDir . '/database/migrations/2016_03_07_222140_create_tasks_table.php',
+    'CreateTestsTable' => $baseDir . '/database/migrations/2016_03_08_182759_create_tests_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

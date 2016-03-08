@@ -29,6 +29,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Survey');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
+
+    public function tests()
+    {
+        return $this->hasMany('App\Test');
+    }
+
     public function commissions()
     {
         return $this->hasMany('App\Commission');

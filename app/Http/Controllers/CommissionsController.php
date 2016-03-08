@@ -82,8 +82,11 @@ class CommissionsController extends Controller
 
      public function destroy($id)
     {
-        Commission::findOrFail($id)->delete();
+        $commission = Commission::findOrFail($id);
+        $binds = $commission->find_in_file_binds()->delete();
+        $commission->delete();
         flash()->success('Комиссия успешно удалена!');
         return redirect('admin/commissions');
     }
 }
+    

@@ -64,7 +64,7 @@
 								<i class="main-icon fa fa-book"></i> <span>Мероприятия</span>
 							</a>
 							<ul><!-- submenus -->
-								<li><a href="#">Задания</a></li>
+								<li><a href="/admin/tasks">Задания</a></li>
 								<li><a href="/admin/surveys">Анкеты</a></li>
 								<li><a href="#">Тестирования</a></li>
 							</ul>

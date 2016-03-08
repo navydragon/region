@@ -15,32 +15,20 @@ use Auth;
 
 class Commission_stagesController extends Controller
 {
+    public function create (Request $request)
+    {
+        $commission = Commission::findOrFail($request->commission);
+        return view('commission_stages.create',compact('commission')); 
+    }
+
     public function store(Request $request, Commission $commission,Commission_stageRequest $request)
     {
         //создаем этап
         $commission_stage = new Commission_stage ($request->all());
         $commission->commission_stages()->save($commission_stage);
-        //загружаем файл
-        if ($request->file<>'')
-        {
-            $source = $request->file;
-            $file = new File;
-            $path = $file->upload($source);
-            $file->user_id = Auth::user()->id;
-            $file->title = $request->filename;
-            $file->type = substr($path, strrpos($path, '.') + 1);
-            $file->path = $path;
-            $file->save();
-
-            $file_bind = new File_bind;
-            $file_bind->bind_type = 'commission_stage';
-            $file_bind->type_id =  $commission_stage->id;
-            $file->file_binds()->save($file_bind);
-
-        }
 
         flash()->success('Этап успешно создан!');
-    	return back();
+    	return redirect('admin/commissions/'.$commission->id);
     }
 
     public function edit ($id)
@@ -64,13 +52,22 @@ class Commission_stagesController extends Controller
                 $event->commission_stage_id = $id;
                 $event->type = "survey";
                 $event->type_id = $val;
-                $event->save();
-                
+                $event->save();  
             }
         }
-         
-
-        
+        //добавляем задания
+        if ($request->has('tasks'))
+        {
+            foreach($request->get('tasks') as $key => $val)
+            {   
+                $event = new Event; 
+                $event->commission_stage_id = $id;
+                $event->type = "task";
+                $event->type_id = $val;
+                $event->save();  
+            }
+        }
+ 
 		flash()->success('Конфигурация этапа "'.$commission_stage->title.'" изменена!');
     	return redirect('admin/commissions/'.$commission_stage->commission_id);
     }

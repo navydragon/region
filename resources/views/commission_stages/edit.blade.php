@@ -1,5 +1,6 @@
 <?php 
 	$surveys = Auth::user()->surveys;
+	$tasks = Auth::user()->tasks;
 ?>
 
 @extends('layouts.admin')
@@ -37,17 +38,28 @@
 							<div class="col-md-4">
 								<strong>Анкеты:</strong>
 								<div class="form-group">
-								@foreach($surveys as $survey)
-									
-										{!! Form::checkbox('surveys['.$survey->id.']', $survey->id, $survey->find_in_stage($commission_stage->id)) !!}
-										{!! Form::label('sur'.$survey->id, $survey->title) !!}
-										
-										<br>
-								@endforeach
-								</div>
+								<ul class="list-group">
+									@foreach($surveys as $survey)
+										<li class="list-group-item nopadding">
+											{!! Form::checkbox('surveys['.$survey->id.']', $survey->id, $survey->find_in_stage($commission_stage->id)) !!}
+											{!! Form::label('sur'.$survey->id, $survey->title) !!}	
+										</li>
+									@endforeach
+								</ul>
+								</div>	
 							</div>
 							<div class="col-md-4">
 								<strong>Задания:</strong>
+								<div class="form-group">
+								<ul class="list-group">
+									@foreach($tasks as $task)
+										<li class="list-group-item nopadding">
+											{!! Form::checkbox('tasks['.$task->id.']', $task->id, $task->find_in_stage($commission_stage->id)) !!}
+											{!! Form::label('task'.$task->id, $task->title) !!}	
+										</li>
+									@endforeach
+								</ul>
+								</div>
 							</div>
 							<div class="col-md-4">
 								<strong>Тестирования:</strong>

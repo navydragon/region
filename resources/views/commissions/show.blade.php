@@ -22,46 +22,48 @@
 										<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
 
 							</div>
-							<span>{{ $commission_stage->title }} (Мероприятий: {{  $commission_stage->events->count() }}, Файлов: {{ $commission_stage->find_in_file_binds()->count() }} )
+							<span><strong>{{ $commission_stage->title }}</strong>, ({{ $commission_stage->start_at }} - {{ $commission_stage->end_at }})  (Мероприятий: {{  $commission_stage->events->count() }} )
 									
 							</span>
 						</li>
 					{!! Form::close() !!}
 				@endforeach
 			</ul>
+			<div class="row">
+				<div class="col-md-6">
+						<a href='/admin/commission_stages/create?commission={{ $commission->id }}'class="btn btn-info">Добавить этап</a>
+				</div>
+			</div>
 			<hr>
 			<div class="row">
 				<div class="col-md-6">
-					<h4>Добавить новый этап:</h4>
-
-					{!! Form::open(array('url' => 'admin/commissions/'.$commission->id.'/commission_stages','files'=>true)) !!}
-						<div class="form-group">
-							{!! Form::label('title', 'Название этапа:') !!}
-						    {!! Form::text('title', null, ['class' => 'form-control']) !!}
-						</div>
-						<div class="form-group">
-							{!! Form::label('description', 'Описание этапа:') !!}
-						    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-						</div>
-						<div class="form-group col-md-6">
-							{!! Form::label('start_at', 'Начало этапа:') !!}
-						    {!! Form::input('date','start_at', null, ['class' => 'form-control']) !!}
-						</div>
-						<div class="form-group col-md-6">
-							{!! Form::label('end_at', 'Конец этапа:') !!}
-						    {!! Form::input('date','end_at', null, ['class' => 'form-control']) !!}
-						</div>
-						<h4>Добавить файл:</h4>
-						<div class="form-group">
-							{!! Form::label('filename', 'Название файла:') !!}
-							{!! Form::text('filename') !!}
-							{!! Form::file('file') !!}
-						</div>
-						<div class="form-group col-md-12" >
-						    {!! Form::submit('Добавить этап', ['class' => 'btn btn-info form-control']) !!}
-						</div>
-					{!! Form::close() !!}
-
+					<h4>Файлы комиссии:</h4>
+					<ul class="list-group">
+						@foreach($commission->find_in_file_binds()->get() as $file_bind)
+							{!! Form::open(array('url' => 'admin/files/'.$file_bind->file->id.'','method' => 'DELETE')) !!}
+								<li class="list-group-item">
+									<div class="btn-group">
+										<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
+									</div>
+										{{$file_bind->file->title}}
+								</li>
+						@endforeach
+					</ul>	
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-md-6">
+				<h4>Добавить файл к комисии:</h4>
+				{!! Form::open(array('url' => 'admin/files/?type=commission&id='.$commission->id,'method' => 'POST','files'=>true)) !!}
+					<div class="form-group">
+						{!! Form::label('filename', 'Название файла:') !!}
+						{!! Form::text('filename') !!}
+						{!! Form::file('file') !!}
+					</div>
+					<div class="form-group">
+					    {!! Form::submit('Добавить файл', ['class' => 'btn btn-info']) !!}
+					</div>
+				{!! Form::close() !!}
 				</div>
 			</div>
 			@include('errors.list')

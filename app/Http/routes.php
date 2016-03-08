@@ -51,16 +51,22 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::resource('admin/commissions','CommissionsController');
 	
 	Route::resource('admin/surveys','SurveysController');
+	Route::resource('admin/tasks','TasksController');
+	Route::resource('admin/tests','TestsController');
 
 	Route::post('admin/surveys/{survey}/survey_questions', 'Survey_questionsController@store');
 	Route::get('admin/survey_questions/{survey_question}/edit', 'Survey_questionsController@edit');
 	Route::patch('admin/survey_questions/{survey_question}', 'Survey_questionsController@update');
 	Route::delete('admin/survey_questions/{survey_question}', 'Survey_questionsController@destroy');
 
+	Route::get('admin/commission_stages/create','Commission_stagesController@create');
 	Route::get('admin/commission_stages/{commission_stage}/edit','Commission_stagesController@edit');
 	Route::patch('admin/commission_stages/{commission_stage}','Commission_stagesController@update');
 	Route::post('admin/commissions/{commission}/commission_stages', 'Commission_stagesController@store'); 
 	Route::delete('admin/commission_stages/{commission_stage}', 'Commission_stagesController@destroy');
+
+	Route::post('admin/files', 'FilesController@store'); 
+	Route::delete('admin/files/{file}', 'FilesController@destroy');
 
 });
 
