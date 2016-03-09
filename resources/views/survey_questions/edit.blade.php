@@ -15,6 +15,4 @@
 			    {!! Form::submit('Обновить', ['class' => 'btn btn-info form-control']) !!}
 			</div>
 	{!! Form::close() !!}
-
-	@include('errors.list')
 @stop

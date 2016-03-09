@@ -10,7 +10,4 @@
     @include('commissions.form',['submitButtonText' => 'Создать'])
     {!! Form::close() !!}
 
-    @include('errors.list')
-
-
 @stop

@@ -10,5 +10,4 @@
 			@include('tasks.form',['submitButtonText' => 'Обновить'])
 	{!! Form::close() !!}
 
-	@include('errors.list')
 @stop

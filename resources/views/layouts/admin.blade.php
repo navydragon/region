@@ -66,7 +66,7 @@
 							<ul><!-- submenus -->
 								<li><a href="/admin/tasks">Задания</a></li>
 								<li><a href="/admin/surveys">Анкеты</a></li>
-								<li><a href="#">Тестирования</a></li>
+								<li><a href="/admin/tests">Тестирования</a></li>
 							</ul>
 						</li>
 						
@@ -168,12 +168,15 @@
 				<header id="page-header">
 					<h1>@yield('title')</h1>
 				</header>
-				<div id="content" class="padding-20">
+				<div id="content" style="padding-top:20px" class="col-md-8 col-sm-12">
 					@include('flash::message')
+					@include('errors.list')
 					@yield('content')
-
 				</div>
-				
+				<div id="description" style="padding-top:20px" class="col-md-4 col-sm-12">
+					@yield('description')
+					@yield('preview')
+				</div>
 			</section>
 			<!-- /MIDDLE -->
 

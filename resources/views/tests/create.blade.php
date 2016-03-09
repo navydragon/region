@@ -6,9 +6,10 @@
 
 @section('content')
 
-    {!! Form::open(array('url' => 'admin/tasks')) !!}
-    @include('tasks.form',['submitButtonText' => 'Создать'])
+    {!! Form::open(array('url' => 'admin/tests')) !!}
+    @include('tests.form',['submitButtonText' => 'Создать'])
     {!! Form::close() !!}
+
 
 
 @stop

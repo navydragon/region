@@ -13,7 +13,7 @@ class TestRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,23 @@ class TestRequest extends Request
      *
      * @return array
      */
-    public function rules()
+   public function rules()
     {
         return [
-            //
+            'title' => 'required|min:3',
+            'description' => 'required',
+            'duration' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return 
+        [
+            'title.required' => 'Поле Имя теста должно быть заполнено ',
+            'title.min' => 'Поле Имя теста должно состоять как минимум из 3-х символов',
+            'description.required' => 'Поле Описание должно быть заполнено',
+            'duration.required' => 'Поле Длительность теста (мин.) должно быть заполнено',
         ];
     }
 }

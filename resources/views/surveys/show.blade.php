@@ -41,7 +41,6 @@
 						</div>
 					{!! Form::close() !!}
 
-					@include('errors.list')
 				</div>
 			</div>
 

@@ -6,6 +6,6 @@
     {!! Form::label('description', 'Описание анкеты:') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
-<div class="form-group">
+<div class="form-group col-md-2 nopadding">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-info form-control']) !!}
 </div>

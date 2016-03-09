@@ -1,6 +1,7 @@
 <?php 
 	$surveys = Auth::user()->surveys;
 	$tasks = Auth::user()->tasks;
+	$tests = Auth::user()->tests;
 ?>
 
 @extends('layouts.admin')
@@ -62,13 +63,21 @@
 								</div>
 							</div>
 							<div class="col-md-4">
-								<strong>Тестирования:</strong>
+								<strong>Тесты:</strong>
+								<div class="form-group">
+								<ul class="list-group">
+									@foreach($tests as $test)
+										<li class="list-group-item nopadding">
+											{!! Form::checkbox('tests['.$test->id.']', $test->id, $test->find_in_stage($commission_stage->id)) !!}
+											{!! Form::label('test'.$test->id, $test->title) !!}	
+										</li>
+									@endforeach
+								</ul>
+								</div>
 							</div>
 						</div>
 						<div class="form-group col-md-4" >
 						    {!! Form::submit('Обновить', ['class' => 'btn btn-info form-control']) !!}
 						</div>
 				{!! Form::close() !!}
-
-	@include('errors.list')
 @stop

@@ -67,6 +67,19 @@ class Commission_stagesController extends Controller
                 $event->save();  
             }
         }
+
+        //добавляем тесты
+        if ($request->has('tests'))
+        {
+            foreach($request->get('tests') as $key => $val)
+            {   
+                $event = new Event; 
+                $event->commission_stage_id = $id;
+                $event->type = "test";
+                $event->type_id = $val;
+                $event->save();  
+            }
+        }
  
 		flash()->success('Конфигурация этапа "'.$commission_stage->title.'" изменена!');
     	return redirect('admin/commissions/'.$commission_stage->commission_id);

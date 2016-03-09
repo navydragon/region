@@ -68,5 +68,15 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::post('admin/files', 'FilesController@store'); 
 	Route::delete('admin/files/{file}', 'FilesController@destroy');
 
+	Route::get('admin/tests/{test}/questions/create','QuestionsController@create');
+	Route::get('admin/tests/{test}/questions/{question}','QuestionsController@edit');
+	Route::post('admin/tests/{test}/questions','QuestionsController@store');
+	Route::delete('admin/questions/{question}','QuestionsController@destroy');
+	Route::patch('admin/questions/{question}','QuestionsController@update');
+
+	Route::post('admin/questions/{question}/answers','AnswersController@store');
+	Route::delete('admin/answers/{answer}','AnswersController@destroy');
+	Route::get('admin/answers/{answer}/edit','AnswersController@edit');
+	Route::patch('admin/answers/{answer}','AnswersController@update');
 });
 
