@@ -26,7 +26,7 @@ class TestRequest extends Request
         return [
             'title' => 'required|min:3',
             'description' => 'required',
-            'duration' => 'required'
+            'duration' => 'required|numeric|min:1',
         ];
     }
 
@@ -38,6 +38,8 @@ class TestRequest extends Request
             'title.min' => 'Поле Имя теста должно состоять как минимум из 3-х символов',
             'description.required' => 'Поле Описание должно быть заполнено',
             'duration.required' => 'Поле Длительность теста (мин.) должно быть заполнено',
+            'duration.numeric' => 'Поле Длительность теста (мин.) должно быть числом',
+            'duration.min' => 'Длительность теста (мин.) должна быть больше или равна 1 минуте',
         ];
     }
 }

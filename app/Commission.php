@@ -3,10 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Commission extends Model
 {
-    protected  $fillable = ['title','description',];
+    protected  $fillable = ['title','description','start_at','end_at'];
+
+    public function getStartAtAttribute()
+    {
+        return Carbon::parse($this->attributes['start_at']); 
+    }
+    public function getEndAtAttribute()
+    {
+        return Carbon::parse($this->attributes['end_at']); 
+    }
 
   	public function user()
     {

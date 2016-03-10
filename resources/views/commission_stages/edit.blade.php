@@ -25,12 +25,12 @@
 								</div>
 								<div class="form-group col-md-6">
 									{!! Form::label('start_at', 'Начало этапа:') !!}
-								    {!! Form::input('date','start_at', null, ['class' => 'form-control']) !!}
+								    {!! Form::input('date','start_at', $commission_stage->start_at->format('Y-m-d'), ['class' => 'form-control']) !!}
 
 								</div>
 								<div class="form-group col-md-6">
 									{!! Form::label('end_at', 'Конец этапа:') !!}
-								    {!! Form::input('date','end_at', null, ['class' => 'form-control']) !!}
+								    {!! Form::input('date','end_at', $commission_stage->end_at->format('Y-m-d'), ['class' => 'form-control']) !!}
 								</div>
 							</div>
 						</div>	
@@ -42,7 +42,7 @@
 								<ul class="list-group">
 									@foreach($surveys as $survey)
 										<li class="list-group-item nopadding">
-											{!! Form::checkbox('surveys['.$survey->id.']', $survey->id, $survey->find_in_stage($commission_stage->id)) !!}
+											{!! Form::checkbox('surveys['.$survey->id.']', $survey->id, $survey->find_in_stage($commission_stage->id)->count()) !!}
 											{!! Form::label('sur'.$survey->id, $survey->title) !!}	
 										</li>
 									@endforeach
@@ -55,7 +55,7 @@
 								<ul class="list-group">
 									@foreach($tasks as $task)
 										<li class="list-group-item nopadding">
-											{!! Form::checkbox('tasks['.$task->id.']', $task->id, $task->find_in_stage($commission_stage->id)) !!}
+											{!! Form::checkbox('tasks['.$task->id.']', $task->id, $task->find_in_stage($commission_stage->id)->count()) !!}
 											{!! Form::label('task'.$task->id, $task->title) !!}	
 										</li>
 									@endforeach
@@ -68,7 +68,7 @@
 								<ul class="list-group">
 									@foreach($tests as $test)
 										<li class="list-group-item nopadding">
-											{!! Form::checkbox('tests['.$test->id.']', $test->id, $test->find_in_stage($commission_stage->id)) !!}
+											{!! Form::checkbox('tests['.$test->id.']', $test->id, $test->find_in_stage($commission_stage->id)->count()) !!}
 											{!! Form::label('test'.$test->id, $test->title) !!}	
 										</li>
 									@endforeach

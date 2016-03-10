@@ -5,11 +5,15 @@
 @stop
 
 @section('content')
-
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<span class="elipsis"><!-- panel title -->
+				<strong>{{ $survey->title }}</strong>
+			</span>
+		</div>
+		<div class="panel-body">
 			<h4>Описание:</h4>
 			<p>{{ $survey->description }}</p>
-
-
 
 			<h4>Вопросы анкеты:</h4>
 			<ul class="list-group">
@@ -27,21 +31,54 @@
 					{!! Form::close() !!}
 				@endforeach
 			</ul>
+		</div>
+	</div>
+			
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="elipsis"><!-- panel title -->
+				<strong>Добавить новый вопрос</strong>
+			</span>
+		</div>
+		<div class="panel-body">
+				{!! Form::open(array('url' => 'admin/surveys/'.$survey->id.'/survey_questions')) !!}
+					<div class="form-group">
+						{!! Form::label('body', 'Текст вопроса анкеты:') !!}
+					    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+					</div>
+					<div class="form-group">
+					    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+					</div>
+				{!! Form::close() !!}
+		</div>
+	</div>
+
+
+			
 			<hr>
 			<div class="row">
 				<div class="col-md-6">
-					<h4>Добавить новый вопрос:</h4>
-
-					{!! Form::open(array('url' => 'admin/surveys/'.$survey->id.'/survey_questions')) !!}
-						<div class="form-group">
-						    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
-						</div>
-						<div class="form-group">
-						    {!! Form::submit('Добавить', ['class' => 'btn btn-info form-control']) !!}
-						</div>
-					{!! Form::close() !!}
+					
 
 				</div>
 			</div>
 
+@stop
+
+@section('description')
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<span class="elipsis"><!-- panel title -->
+				<strong>Пояснение</strong>
+			</span>
+		</div>
+		<div class="panel-body">
+			Просмотр анкеты и добавление вопросов: 
+			<ul>
+				<li>Для добавления вопроса в анкету введите текст вопроса в соответствующее поле и нажмите кнопку "Добавить"</li>
+				<li>Для редактирования вопроса нажмите кнопку <span class="fa fa-lg fa-edit"></span></li>
+				<li>Для удаления вопроса нажмите кнопку <span class="fa fa-lg  fa-trash"></span></li>
+			</ul>
+		</div>
+	</div>
 @stop

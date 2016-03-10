@@ -17,6 +17,8 @@ class CreateCommissionsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('description');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->integer('status')->unsigned(); //статус коммиссии
             $table->timestamps();
 

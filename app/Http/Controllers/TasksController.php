@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Event;
 use App\Http\Requests;
 use App\Http\Requests\TaskRequest;
 use App\Http\Controllers\Controller;
@@ -39,7 +40,7 @@ class TasksController extends Controller
         Auth::user()->tasks()->save($task);
          flash()->success('Задание успешно создано!');
 
-    	return redirect('admin/tasks');
+    	return redirect('admin/tasks/'.$task->id);
     }
     public function edit($id)
     {
@@ -57,6 +58,10 @@ class TasksController extends Controller
 
     public function destroy($id)
     {
+        //удаляем из этапов
+        $events = Event::where('type', '=', 'task')->where('type_id', '=',$id);
+        $events->delete();
+
         $task = Task::findOrFail($id);
         $binds = $task->find_in_file_binds()->delete();
         $task->delete();

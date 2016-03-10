@@ -25,7 +25,9 @@ class CommissionRequest extends Request
     {
         return [
             'title' => 'required|min:3',
-            'description' => 'required'
+            'description' => 'required',
+            'start_at' => 'required',
+            'end_at' => 'required'
         ];
     }
 
@@ -36,6 +38,8 @@ class CommissionRequest extends Request
             'title.required' => 'Поле Название комиссии должно быть заполнено ',
             'title.min' => 'Поле Название комиссии должно состоять как минимум из 3-х символов',
             'description.required' => 'Поле Описание должно быть заполнено',
+            'start_at.required' => 'Введите дату начала комиссии',
+            'end_at.required' => 'Введите дату окончания комиссии',
         ];
     }
 }

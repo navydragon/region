@@ -19,11 +19,11 @@
 						    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 						</div>
 						<div class="form-group col-md-6">
-							{!! Form::label('start_at', 'Начало этапа:') !!}
+							{!! Form::label('start_at', 'Дата начала этапа:') !!}
 						    {!! Form::input('date','start_at', null, ['class' => 'form-control']) !!}
 						</div>
 						<div class="form-group col-md-6">
-							{!! Form::label('end_at', 'Конец этапа:') !!}
+							{!! Form::label('end_at', 'Дата конца этапа:') !!}
 						    {!! Form::input('date','end_at', null, ['class' => 'form-control']) !!}
 						</div>
 						

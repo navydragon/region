@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Survey;
+use App\Event;
 use App\Http\Requests;
 use App\Http\Requests\SurveyRequest;
 use App\Http\Controllers\Controller;
@@ -45,7 +46,7 @@ class SurveysController extends Controller
         //$survey->title = $input['title'];
          flash()->success('Анкета успешно создана!');
 
-    	return redirect('admin/surveys');
+    	return redirect('admin/surveys/'.$survey->id);
     }
     public function edit($id)
     {
@@ -63,6 +64,10 @@ class SurveysController extends Controller
 
     public function destroy($id)
     {
+        //удаляем из этапов
+        $events = Event::where('type', '=', 'survey')->where('type_id', '=',$id);
+        $events->delete();
+
         Survey::findOrFail($id)->delete();
         flash()->success('Анкета успешно удалена!');
         return redirect('admin/surveys');

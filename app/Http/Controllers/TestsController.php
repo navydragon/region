@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Test;
+use App\Event;
 use App\Http\Requests;
 use App\Http\Requests\TestRequest;
 use App\Http\Controllers\Controller;
@@ -39,7 +40,7 @@ class TestsController extends Controller
         Auth::user()->tests()->save($test);
          flash()->success('Тестирование успешно создано!');
 
-    	return redirect('admin/tests');
+    	return redirect('admin/tests/'.$test->id);
     }
     public function edit($id)
     {
@@ -57,8 +58,11 @@ class TestsController extends Controller
 
     public function destroy($id)
     {
+        //удаляем из этапов
+        $events = Event::where('type', '=', 'test')->where('type_id', '=',$id);
+        $events->delete();
+
         $test = Test::findOrFail($id);
-        $binds = $test->find_in_file_binds()->delete();
         $test->delete();
         flash()->success('Тестирование успешно удалено!');
         return redirect('admin/tests');

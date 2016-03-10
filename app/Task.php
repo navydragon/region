@@ -23,7 +23,7 @@ class Task extends Model
     public function find_in_stage($stage)
     {
     	
-    	$event = Event::where('type', '=', 'task')->where('type_id', '=',$this->id)->count();
-    	if ($event>0) {return true;}else{return false;}
+    	$event = Event::where('type', '=', 'task')->where('type_id', '=',$this->id);
+    	return $event;
     }
 }
