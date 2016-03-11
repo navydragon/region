@@ -1,10 +1,21 @@
+<?
+	$test = $question->test;
+?>
+
+
 @extends('layouts.admin')
 
 @section('title')
 	Редактирование вопроса "{{ $question->title }}"
 @stop
 
-
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tests">Тестирования</a></li>
+	<li><a href="/admin/tests/{{$test->id}}">{{$test->title}}</a></li>
+	<li class="active">Редактирование вопроса</li>
+@stop
 
 @section('content')
 	

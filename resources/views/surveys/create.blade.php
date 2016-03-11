@@ -4,6 +4,13 @@
     Создание новой анкеты
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/surveys">Анкеты</a></li>
+	<li class="active">Новая</li>
+@stop
+
 @section('content')
 	{!! Form::open(array('url' => 'admin/surveys')) !!}
 	<div class="panel panel-primary">

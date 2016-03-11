@@ -4,6 +4,14 @@
 	Редактирование анкеты "{{ $survey->title }}"
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/surveys">Анкеты</a></li>
+	<li><a href="/admin/surveys/{{$survey->id}}">{{$survey->title}}</a></li>
+	<li class="active">Редактирование</li>
+@stop
+
 @section('content')
 	
 	{!! Form::model($survey, ['method' => 'PATCH','url' => '/admin/surveys/' . $survey->id]) !!}

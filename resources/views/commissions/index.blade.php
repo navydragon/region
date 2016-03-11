@@ -4,7 +4,10 @@
     Комиссии по проверке знаний требований охраны труда
 @stop
 
-
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Комиссии</li>
+@stop
 
 @section('content')
 	<div class="panel panel-primary">

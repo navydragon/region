@@ -4,6 +4,13 @@
 Анкета "{{ $survey->title }}"
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/surveys">Анкеты</a></li>
+	<li class="active">{{ $survey->title }}</li>
+@stop
+
 @section('content')
 	<div class="panel panel-primary">
 		<div class="panel-heading">

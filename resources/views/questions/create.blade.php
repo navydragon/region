@@ -4,6 +4,13 @@
 Добавление вопроса к тесту "{{ $test->title }}"
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tests">Тестирования</a></li>
+	<li><a href="/admin/tests/{{$test->id}}">{{$test->title}}</a></li>
+	<li class="active">Новый вопрос</li>
+@stop
 
 
 @section('content')

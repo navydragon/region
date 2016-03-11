@@ -4,6 +4,11 @@
 Задания
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li class="active">Задания</li>
+@stop
 
 @section('content')
 	<div class="panel panel-primary">

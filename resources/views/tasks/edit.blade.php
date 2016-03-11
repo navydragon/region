@@ -4,6 +4,13 @@
 	Редактирование задания "{{ $task->title }}"
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tasks">Задания</a></li>
+	<li><a href="/admin/tasks/{{$task->id}}">{{$task->title}}</a></li>
+	<li class="active">Редактирование</li>
+@stop
 
 @section('content')
 	

@@ -1,7 +1,19 @@
+<?
+	$survey = $survey_question->survey;
+?>
+
 @extends('layouts.admin')
 
 @section('title')
 Редактирование вопроса анкеты "{{ $survey_question->body }}"
+@stop
+
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/surveys">Анкеты</a></li>
+	<li><a href="/admin/surveys/{{$survey->id}}">{{$survey->title}}</a></li>
+	<li class="active">Редактирование вопроса</li>
 @stop
 
 @section('content')

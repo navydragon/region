@@ -4,6 +4,12 @@
 	Редактирование теста "{{ $test->title }}"
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tests">Тестирования</a></li>
+	<li>{{$test->title}}</li>
+@stop
 
 @section('content')
 	

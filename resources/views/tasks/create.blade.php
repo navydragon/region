@@ -4,6 +4,13 @@
     Создание нового задания
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tasks">Задания</a></li>
+	<li class="active">Новое</li>
+@stop
+
 @section('content')
 
 {!! Form::open(array('url' => 'admin/tasks')) !!}

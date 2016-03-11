@@ -4,6 +4,13 @@
 Тест "{{ $test->title }}"
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tests">Тестирования</a></li>
+	<li class="active">{{ $test->title }}</li>
+@stop
+
 
 @section('content')
 	<div class="panel panel-primary">

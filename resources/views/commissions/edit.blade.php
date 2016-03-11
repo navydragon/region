@@ -4,7 +4,12 @@
     Редактирование комиссии {{ $commission->title }}
 @stop
 
-
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li><a href="/admin/commissions">Комиссии</a></li>
+	<li class="active">{{ $commission->title}}</li>
+	<li class="active">Редактирование</li>
+@stop
 
 
 

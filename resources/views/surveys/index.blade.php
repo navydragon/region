@@ -4,6 +4,12 @@
 Анкеты
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li class="active">Анкеты</li>
+@stop
+
 @section('content')
 	<div class="panel panel-primary">
 		<div class="panel-heading">

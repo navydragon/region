@@ -4,6 +4,12 @@
     Создание нового теста
 @stop
 
+@section('breadcrumb')
+	<li><a href="/admin/">Главная</a></li>
+	<li class="active">Мероприятия</li>
+	<li><a href="/admin/tests">Тестирования</a></li>
+	<li class="active">Новое</li>
+@stop
 
 
 

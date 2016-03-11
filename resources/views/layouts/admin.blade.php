@@ -167,6 +167,9 @@
 			<section id="middle">
 				<header id="page-header">
 					<h1>@yield('title')</h1>
+					<ol class="breadcrumb">
+						@yield('breadcrumb')
+					</ol>
 				</header>
 				<div id="content" style="padding-top:20px" class="col-md-8 col-sm-12">
 					@include('flash::message')
