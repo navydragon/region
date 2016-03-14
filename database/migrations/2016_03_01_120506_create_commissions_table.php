@@ -19,7 +19,7 @@ class CreateCommissionsTable extends Migration
             $table->string('description');
             $table->date('start_at');
             $table->date('end_at');
-            $table->integer('status')->unsigned(); //статус коммиссии
+            $table->integer('status')->unsigned()->default(1); //статус коммиссии
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -27,8 +27,12 @@ class CreateCommissionsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
         });
+
+       
+       
     }
 
+    
     /**
      * Reverse the migrations.
      *

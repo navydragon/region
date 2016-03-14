@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Commission');
     }
 
+    public function commissions_pivot()
+    {
+        return $this->belongsToMany('App\Commission', 'commission_user');
+    }
+
     public function files()
     {
         return $this->hasMany('App\File');

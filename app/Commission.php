@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 class Commission extends Model
 {
-    protected  $fillable = ['title','description','start_at','end_at'];
+    protected  $fillable = ['title','description','start_at','end_at','status'];
 
     public function getStartAtAttribute()
     {
@@ -22,6 +22,11 @@ class Commission extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function user_pivot()
+    {
+        return $this->belongsToMany('App\User', 'commission_user');
+    }
+
     public function commission_stages()
     {
         return $this->hasMany('App\Commission_stage');
@@ -32,6 +37,23 @@ class Commission extends Model
         
         $binds = File_bind::where('bind_type', '=', 'commission')->where('type_id', '=',$this->id);
         return $binds;
+    }
+
+    public function get_status_name()
+    {
+        $status = $this->status;
+        switch ($status) {
+            case '1': $status_label = "Планируется"; break;
+            case '2': $status_label = "Проводится"; break;
+            case '3': $status_label = "Завершена"; break;
+            default: $status_label = "Не определен"; break;
+        }
+        return $status_label;
+    }
+
+    public function check_match($status1,$status2)
+    {
+        if ($status1==$status2) {return true;}else{return false;}
     }
 }
 

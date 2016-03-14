@@ -21,6 +21,8 @@
 		<div class="panel-body">
 			<h4>Описание:</h4>
 			<p>{{ $commission->description }}</p>
+			<h4>Статус</h4>
+			<p><strong>{{ $commission->get_status_name() }}</strong></p>
 			<h4>Даты проведения:</h4>
 			<p>{{$commission->start_at->format("d.m.Y")}} - {{$commission->end_at->format("d.m.Y")}}</p>
 			<h4>Этапы комиссии:</h4>

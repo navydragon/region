@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'CreateAnswersTable' => $baseDir . '/database/migrations/2016_03_09_115107_create_answers_table.php',
     'CreateCommissionStagesTable' => $baseDir . '/database/migrations/2016_03_01_211449_create_commission_stages_table.php',
+    'CreateCommissionUserTable' => $baseDir . '/database/migrations/2016_03_14_081726_create_commission_user_table.php',
     'CreateCommissionsTable' => $baseDir . '/database/migrations/2016_03_01_120506_create_commissions_table.php',
     'CreateEventsTable' => $baseDir . '/database/migrations/2016_03_01_225559_create_events_table.php',
     'CreateFileBindsTable' => $baseDir . '/database/migrations/2016_03_03_094357_create_file_binds_table.php',
