@@ -20,4 +20,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Survey::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'user_id' => '1',
+    ];
+});
+
 

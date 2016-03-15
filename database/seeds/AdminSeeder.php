@@ -11,6 +11,14 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 50)->create();
+         factory(App\User::class, 1)->create([
+            'name' => 'Nikolay Grinchar',
+            'email' => 'ief07@bk.ru',
+            'password' => bcrypt('111111'),
+            'remember_token' => str_random(10),
+            ]);
+      
+
+         factory(App\Survey::class, 2)->create(['user_id'=>1]);
     }
 }
