@@ -25,7 +25,7 @@
 											<a href='/admin/commissions/{{ $commission->id }}/edit' title="Редактировать" class="btn btn-default btn-sm"><span class="fa fa-lg fa-edit"></span></a>
 											<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
 										</div>
-										<span><a href="/admin/commissions/{{ $commission->id }}"><strong>{{ $commission->title }}</strong></a> ({{$commission->start_at->format("d.m.Y")}}-{{$commission->end_at->format("d.m.Y")}}) (Этапов: {{  $commission->commission_stages->count() }}, Файлов: {{ $commission->find_in_file_binds()->count() }}) Статус: <strong>{{ $commission->get_status_name() }}</strong> </span>
+										<span><a href="/admin/commissions/{{ $commission->id }}"><strong>{{ $commission->title }}</strong></a><br> ({{$commission->start_at->format("d.m.Y")}}-{{$commission->end_at->format("d.m.Y")}}) (Этапов: {{  $commission->commission_stages->count() }}, Файлов: {{ $commission->find_in_file_binds()->count() }}) Статус: <strong>{{ $commission->get_status_name() }}</strong> </span>
 										<span class="pull-right">Организатор: {{$commission->user->name}}</span>
 							</li>
 						{!! Form::close() !!}

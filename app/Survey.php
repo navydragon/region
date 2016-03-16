@@ -22,7 +22,7 @@ class Survey extends Model
     public function find_in_stage($stage)
     {
     	
-    	$event = Event::where('type', '=', 'survey')->where('type_id', '=',$this->id);
+    	$event = Event::where('type', '=', 'survey')->where('type_id', '=',$this->id)->where('commission_stage_id','=',$stage);
     	return $event;
     }
 

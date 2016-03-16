@@ -78,5 +78,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::delete('admin/answers/{answer}','AnswersController@destroy');
 	Route::get('admin/answers/{answer}/edit','AnswersController@edit');
 	Route::patch('admin/answers/{answer}','AnswersController@update');
+
+	Route::get('commissions/{commission}/join','UserCommissionController@join');
 });
 

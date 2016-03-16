@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Главная страница
+Главная
 @stop
 
 @section('content')
@@ -31,7 +31,7 @@
                            <a href="{{$file->file->path}}"" target="_blank" class="col-md-12 nomargin""> {{$file->file->title}} </a>
                         @endforeach
                     </td>
-                    <td><a href="#"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Присоединиться</a></td>
+                    <td><a href="commissions/{{$commission->id}}/join"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Присоединиться</a></td>
             </tr>
             @endforeach
         </tbody>
