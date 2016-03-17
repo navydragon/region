@@ -105,7 +105,7 @@
 
 				<!-- Logo -->
 				<span class="logo pull-left">
-					<img src="{{ URL::asset('assets/images/rzd.png') }}" alt="admin panel"  />
+					<img src="{{ URL::asset('assets/images/rzd-mini.png') }}" alt="admin panel"  />
 				</span>
 
 				<!--<form method="get" action="page-search.html" class="search pull-left hidden-xs">

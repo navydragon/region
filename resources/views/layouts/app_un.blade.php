@@ -6,7 +6,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Система проведения комиссий по проверке знаний требований охраны труда в ОАО "РЖД"</title>
+        <title>@yield('title')</title>
         <meta name="keywords" content="HTML5,CSS3,Template" />
         <meta name="description" content="" />
         <meta name="Author" content="MIIT IEF" />
@@ -87,7 +87,7 @@
 
                 Example Usage:  class="clearfix sticky header-sm transparent noborder"
             -->
-            <div id="header" class="sticky clearfix header-sm">
+            <div id="header" class="header-sm sticky clearfix">
 
                 <!-- TOP NAV -->
                 <header id="topNav">
@@ -98,83 +98,45 @@
                             <i class="fa fa-bars"></i>
                         </button>
 
+                        <!-- BUTTONS -->
+                    
+                        <!-- /BUTTONS -->
+
                         <!-- Logo -->
                         <a class="logo pull-left" href="/">
                             <img src="assets/images/rzd.png" alt="" />
                         </a>
 
-                        <!-- 
-                            Top Nav 
-                            
-                            AVAILABLE CLASSES:
-                            submenu-dark = dark sub menu
-                        -->
-                        @if (Auth::check())
-                            <div class="navbar-collapse pull-left nav-main-collapse collapse">
-                                <nav class="nav-main">
-                                    <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-                                        <li class="active"><!-- HOME -->
-                                            <a href="/home">
-                                                КОМИССИИ
-                                            </a>
-                                        </li>
-                                        <li><!-- FEATURES -->
-                                            <a href="/admin">
-                                                АДМИНИСТРИРОВАНИЕ
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+                     
                         
-                            <ul class="nav pull-right">
 
-                        <!-- USER OPTIONS -->
-                        <li class="dropdown pull-left open">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">
-                                <img class="user-avatar" alt="" src="http://region/assets/images/noavatar.jpg" height="34"> 
-                                <span class="user-name">
-                                    <span class="hidden-xs">
-                                        Nikolay Grinchar <i class="fa fa-angle-down"></i>
-                                    </span>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu hold-on-click">
-                                <li><!-- my calendar -->
-                                    <a href="calendar.html"><i class="fa fa-calendar"></i> Calendar</a>
-                                </li>
-                                <li><!-- my inbox -->
-                                    <a href="#"><i class="fa fa-envelope"></i> Inbox
-                                        <span class="pull-right label label-default">0</span>
-                                    </a>
-                                </li>
-                                <li><!-- settings -->
-                                    <a href="page-user-profile.html"><i class="fa fa-cogs"></i> Settings</a>
-                                </li>
-
-                                <li class="divider"></li>
-
-                                <li><!-- lockscreen -->
-                                    <a href="page-lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
-                                </li>
-                                <li><!-- logout -->
-                                    <a href="http://region/logout"><i class="fa fa-power-off"></i> Log Out</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- /USER OPTIONS -->
-
-                    </ul>
-                        @endif
                     </div>
                 </header>
                 <!-- /Top Nav -->
 
             </div>
 
+
+            <!-- 
+                PAGE HEADER 
+                
+                CLASSES:
+                    .page-header-xs = 20px margins
+                    .page-header-md = 50px margins
+                    .page-header-lg = 80px margins
+                    .page-header-xlg= 130px margins
+                    .dark           = dark page header
+
+                    .shadow-before-1    = shadow 1 header top
+                    .shadow-after-1     = shadow 1 header bottom
+                    .shadow-before-2    = shadow 2 header top
+                    .shadow-after-2     = shadow 2 header bottom
+                    .shadow-before-3    = shadow 3 header top
+                    .shadow-after-3     = shadow 3 header bottom
+            -->
             <section class="page-header page-header-xs">
                 <div class="container">
-                   @yield('title')
+                    <div class="text-center"><h1><strong>Департамент охраны труда, промышленной безопасности и экологического контроля</h1></div>
                         @yield('breadcrumbs')
                 </div>
             </section>
@@ -184,11 +146,13 @@
 
 
             <!-- -->
-
+            <section>
+                <div class="container">
                     
                     @yield('content')
                     
-
+                </div>
+            </section>
             <!-- / -->
 
 
