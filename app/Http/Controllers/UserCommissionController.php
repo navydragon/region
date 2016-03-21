@@ -17,12 +17,18 @@ class UserCommissionController extends Controller
     	$commission = Commission::findOrFail($id);
     	Auth::user()->commissions_pivot()->attach($commission);
 
-    	return view('user.commissions.show',compact('commission')); 
+    	return redirect('commissions/'.$id);
     }
 
      public function leave($commission)
     {
     	Auth::user()->commissions_pivot()->detach($commission);
     	return back();
+    }
+
+     public function show($id)
+    {
+        $commission = Commission::findOrFail($id);
+        return view('user.commissions.show',compact('commission')); 
     }
 }

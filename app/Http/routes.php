@@ -30,13 +30,8 @@ Route::get('contact','PagesController@contact');
 
 Route::group(['middleware' => ['web']], function () 
 {
-    //Route::get('surveys', 'SurveysController@index');
-	//Route::get('surveys/create', 'SurveysController@create');
-	//Route::get('surveys/{id}', 'SurveysController@show');
-	//Route::post('surveys', 'SurveysController@store');
-	//Route::get('surveys/{id}/edit', 'SurveysController@edit');
 	Route::auth();
-	Route::get('/', function () {return view('welcome');}); 
+	Route::get('/', 'HomeController@welcome'); 
 
 
 });
@@ -80,5 +75,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::patch('admin/answers/{answer}','AnswersController@update');
 
 	Route::get('commissions/{commission}/join','UserCommissionController@join');
+	Route::get('commissions/{commission}','UserCommissionController@show');
+	Route::get('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_show');
 });
 

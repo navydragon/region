@@ -4,6 +4,7 @@
      <div class="text-center"><h1><strong>Департамент охраны труда, промышленной безопасности и экологического контроля</strong></h1></div>
 @stop
 @section('content')
+
             <section id="home">
                 <div class="display-table">
                     <div class="display-table-cell vertical-align-middle">
@@ -106,4 +107,5 @@
 
                 </div>
             </section>
+    
 @endsection

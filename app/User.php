@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function commissions_pivot()
     {
-        return $this->belongsToMany('App\Commission', 'commission_user');
+        return $this->belongsToMany('App\Commission', 'commission_user')->withTimestamps();
     }
 
     public function files()

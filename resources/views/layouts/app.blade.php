@@ -27,7 +27,7 @@
 
         <!-- PAGE LEVEL SCRIPTS -->
         <link href="{{ URL::asset('assets/front/css/header-1.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ URL::asset('assets/front/css/color_scheme/green.css') }}" rel="stylesheet" type="text/css" id="color_scheme" />
+        <link href="{{ URL::asset('assets/front/css/color_scheme/blue.css') }}" rel="stylesheet" type="text/css" id="color_scheme" />
     </head>
 
     <!--
@@ -100,7 +100,7 @@
 
                         <!-- Logo -->
                         <a class="logo pull-left" href="/">
-                            <img src="assets/images/rzd.png" alt="" />
+                            <img src="{{ URL::asset('assets/images/rzd.png') }}" alt="" />
                         </a>
 
                         <!-- 
@@ -185,9 +185,9 @@
 
             <!-- -->
 
-                    
+                    <div class="container">
                     @yield('content')
-                    
+                    </div>
 
             <!-- / -->
 

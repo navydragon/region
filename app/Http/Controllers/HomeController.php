@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Commission;
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -27,5 +27,16 @@ class HomeController extends Controller
     {
         $commissions = Commission::where('status','=','1')->get();
         return view('home',compact('commissions'));
+    }
+
+    public function welcome()
+    {
+         if (Auth::check())
+         {
+            return redirect('home');
+         }else{
+            return view ('welcome');
+         }
+        
     }
 }
