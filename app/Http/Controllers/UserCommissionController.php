@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Commission;
-
+use App\Survey;
 
 class UserCommissionController extends Controller
 {
@@ -30,5 +30,23 @@ class UserCommissionController extends Controller
     {
         $commission = Commission::findOrFail($id);
         return view('user.commissions.show',compact('commission')); 
+    }
+
+    public function survey_show($commission, $survey)
+    {
+        $commission = Commission::findOrFail($commission);
+        $survey = Survey::findOrFail($survey);
+        return view('user.commissions.survey_show',compact(['commission','survey'])); 
+    }
+
+    public function survey_store(Request $request)
+    {
+        Auth::user()->survey_questions_pivot()->detach();
+        foreach ($request->sq as $key => $value)
+        {
+            Auth::user()->survey_questions_pivot($key)->attach($key, ['answer' => $value]);
+            
+        }
+        return redirect('commissions/'.$request->commission);
     }
 }

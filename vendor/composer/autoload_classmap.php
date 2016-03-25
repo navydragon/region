@@ -525,7 +525,7 @@ return array(
     'SebastianBergmann\\RecursionContext\\Exception' => $vendorDir . '/sebastian/recursion-context/src/Exception.php',
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
-    'SurveyquestionUser' => $baseDir . '/database/migrations/2016_03_21_114556_surveyquestion_user.php',
+    'SurveyquestionUsers' => $baseDir . '/database/migrations/2016_03_24_122957_surveyquestion_users.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
 );

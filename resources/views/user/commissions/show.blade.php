@@ -52,7 +52,7 @@
 										<tr>
 											<td>{{$event->event_description()->title}}</td>
 											<td>{{$event->event_description()->type}}</td>
-											<td><a href="commission/{{$commission->id}}{{$event->event_description()->sublink}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-edit white"></i> Выполнить </a></td>
+											<td><a href="/commissions/{{$commission->id}}{{$event->event_description()->sublink}}" class="btn btn-default btn-xs pull-right"><i class="fa fa-edit white"></i> Выполнить </a></td>
 										</tr>
 									@endforeach
 									

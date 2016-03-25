@@ -130,7 +130,7 @@
                             <ul class="nav pull-right">
 
                         <!-- USER OPTIONS -->
-                        <li class="dropdown pull-left open">
+                        <li class="dropdown pull-left">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">
                                 <img class="user-avatar" alt="" src="http://region/assets/images/noavatar.jpg" height="34"> 
                                 <span class="user-name">

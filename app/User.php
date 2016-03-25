@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Commission', 'commission_user')->withTimestamps();
     }
 
+    public function survey_questions_pivot()
+    {
+        return $this->belongsToMany('App\Survey_question', 'survey_question_user')->withPivot('answer')->withTimestamps();
+    }
+
     public function files()
     {
         return $this->hasMany('App\File');
