@@ -18,13 +18,14 @@
 			{!! Form::open(array('url' => 'commissions/'.$commission->id.'/surveys/'.$survey->id.'','method' => 'POST')) !!}
 			@foreach ($survey->survey_questions as $question)
 			
-				<h5>{{ $question->body }}</h5>
-				<? $qq = Auth::user()->survey_questions_pivot->where('survey_question_id','=',$question->id); ?>
-				<textarea name="sq[{{$question->id}}]" id="" rows="5" class="form-control" ></textarea>
-				<br><br>
+				{!! Form::label('sq['.$question->id.']',$question->body) !!}
+				
+				{!! Form::textarea('sq['.$question->id.']',$question->users_pivot()->find(Auth::user()->id)->pivot->answer,['class' => 'form-control']) !!}
+				<br>
 			@endforeach
 		</div>
 			<input type="submit" class="btn btn-primary" value="Сохранить"/>
 			{!! Form::close() !!}
 	</section>	
 @stop
+

@@ -12,4 +12,9 @@ class Survey_question extends Model
     {
     	return $this->belongsTo('App\Survey');
     }
+
+    public function users_pivot()
+    {
+        return $this->belongsToMany('App\User', 'survey_question_user')->withPivot('answer')->withTimestamps();
+    }
 }

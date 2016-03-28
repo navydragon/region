@@ -31,7 +31,13 @@
                            <a href="{{$file->file->path}}"" target="_blank" class="col-md-12 nomargin""> {{$file->file->title}} </a>
                         @endforeach
                     </td>
-                    <td><a href="commissions/{{$commission->id}}/join"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Присоединиться</a></td>
+                    <td>
+                        @if (Auth::user()->commissions_pivot()->find($commission->id))
+                            <a href="commissions/{{$commission->id}}/"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Войти</a>
+                        @else
+                            <a href="commissions/{{$commission->id}}/join"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Присоединиться</a>
+                        @endif
+                    </td>
             </tr>
             @endforeach
         </tbody>
