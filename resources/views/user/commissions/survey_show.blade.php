@@ -20,7 +20,7 @@
 			
 				{!! Form::label('sq['.$question->id.']',$question->body) !!}
 				
-				{!! Form::textarea('sq['.$question->id.']',$question->users_pivot()->find(Auth::user()->id)->pivot->answer,['class' => 'form-control']) !!}
+				{!! Form::textarea('sq['.$question->id.']',$question->user_answer(),['class' => 'form-control']) !!}
 				<br>
 			@endforeach
 		</div>
