@@ -113,7 +113,7 @@
                             <div class="navbar-collapse pull-left nav-main-collapse collapse">
                                 <nav class="nav-main">
                                     <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-                                        <li class="active"><!-- HOME -->
+                                        <li><!-- HOME -->
                                             <a href="/home">
                                                 КОМИССИИ
                                             </a>

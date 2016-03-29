@@ -50,13 +50,14 @@
 			<h4>Файлы комиссии:</h4>
 			<ul class="list-group">
 				@foreach($commission->find_in_file_binds()->get() as $file_bind)
-					{!! Form::open(array('url' => 'admin/files/'.$file_bind->file->id.'','method' => 'DELETE')) !!}
+					{!! Form::open(array('url' => 'admin/files/'.$file_bind->file->id.'','method' => 'DELETE','class'=>'nomargin')) !!}
 						<li class="list-group-item">
 							<div class="btn-group">
 								<button title="Удалить" class="btn btn-default btn-sm"><span class="fa fa-lg  fa-trash"></span></button>
 							</div>
 								{{$file_bind->file->title}}
 						</li>
+					{!! Form::close() !!}
 				@endforeach
 			</ul>
 		</div>

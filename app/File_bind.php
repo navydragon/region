@@ -12,4 +12,9 @@ class File_bind extends Model
     {
     	return $this->belongsTo('App\File');
     }
+
+    public function scopeType_id($query, $id)
+    {
+    	return $query->where('type_id','=',$id);
+    }
 }

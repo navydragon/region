@@ -58,5 +58,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\File');
     }
+
+    public function file_binds($type)
+    {
+        return $this->hasManyThrough('App\File_bind','App\File')->where('bind_type','=',$type);
+    }
 }
 
