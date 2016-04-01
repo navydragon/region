@@ -16,4 +16,10 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer');
     }
+
+    public function right_answers()
+    {
+    	return $this->answers()->where('right','=',1);
+
+    }
 }

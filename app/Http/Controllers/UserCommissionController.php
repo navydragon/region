@@ -10,6 +10,7 @@ use Auth;
 use App\Commission;
 use App\Survey;
 use App\Task;
+use App\Test;
 
 class UserCommissionController extends Controller
 {
@@ -56,5 +57,12 @@ class UserCommissionController extends Controller
         $commission = Commission::findOrFail($commission);
         $task = Task::findOrFail($task);
         return view('user.commissions.task_show',compact(['commission','task'])); 
+    }
+
+     public function test_show($commission,$test)
+    {
+        $commission = Commission::findOrFail($commission);
+        $test = Test::findOrFail($test);
+        return view('user.commissions.test_show',compact(['commission','test'])); 
     }
 }
