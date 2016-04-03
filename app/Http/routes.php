@@ -80,5 +80,6 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::post('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_store');
 	Route::get('commissions/{commission}/tasks/{task}','UserCommissionController@task_show');
 	Route::get('commissions/{commission}/tests/{test}','UserCommissionController@test_show');
+	Route::post('commissions/{commission}/tests/{test}','UserCommissionController@test_store');
 });
 
