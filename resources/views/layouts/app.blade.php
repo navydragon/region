@@ -135,7 +135,7 @@
                                 <img class="user-avatar" alt="" src="http://region/assets/images/noavatar.jpg" height="34"> 
                                 <span class="user-name">
                                     <span class="hidden-xs">
-                                        Nikolay Grinchar <i class="fa fa-angle-down"></i>
+                                        {{Auth::user()->short_name()}} <i class="fa fa-angle-down"></i>
                                     </span>
                                 </span>
                             </a>

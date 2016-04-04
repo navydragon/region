@@ -9,16 +9,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Регистрация</div>
-                    <div class="panel-body">
                         <form class="nomargin sky-form boxed" role="form" method="POST" action="{{ url('/register') }}">
                             {!! csrf_field() !!}
                             <header>
                                 <i class="fa fa-users"></i> Регистрация
-                                <span class="small">
-                                    Уже зарегистрированы? <a href="/login"><strong>Авторизуйтесь!</strong></a>
-                                </span>
                             </header>
                             <fieldset>
                                 <div class="col-md-4{{ $errors->has('surname') ? ' has-error' : '' }}">
@@ -45,12 +39,12 @@
 
                                 <div class="col-md-4">
                                     <label class="input">
-                                        Отчество <input value="{{ old('fathername') }}" name="name" type="text" placeholder="Отчество">
+                                        Отчество <input value="{{ old('fathername') }}" name="fathername" value="{{ old('fathername') }}" type="text" placeholder="Отчество">
                                     </label>
                                 </div>
                                 
                                 <div class="row nomargin">
-                                    <div class="col-md-6{{ $errors->has('name') ? ' has-error' : '' }}">
+                                    <div class="col-md-6{{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label>Адрес электронной почты *</label>
                                         <label class="input">
                                             <i class="ico-append fa fa-envelope"></i>
@@ -102,6 +96,38 @@
                                         @endif
                                     </div>
                                 </div>
+
+                                <div class="col-md-12 margin-top-10"><label>Выберите филиал или (если филиала нет в списке) введите его в поле справа</label></div>
+                                <div class="row nomargin">
+                                    <label class="select margin-bottom-10 col-md-6">
+                                        <select name="filial" class="form-control select2">
+                                            <option value="0" selected="" disabled="">Выберите филиал...</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="input col-md-6">
+                                        <input name="new_filial" type="text" placeholder="Другой филиал">
+                                    </label>
+                                </div>
+
+                                <div class="col-md-12"><label>Выберите должность или (если должности нет в списке) введите ее в поле справа</label></div>
+                                <div class="row nomargin">
+                                    <label class="select margin-bottom-10 col-md-6">
+                                        <select name="filial" class="form-control select2">
+                                            <option value="0" selected="" disabled="">Выберите должность...</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="input col-md-6">
+                                        <input name="new_filial" type="text" placeholder="Другая должность">
+                                    </label>
+                                </div>
+
+                                <div class="margin-top-30">
+                                    <label class="checkbox nomargin"><input class="checked-agree" type="checkbox" name="agree"><i></i>Я даю согласие на обработку моих персональных данных в рамках проведения обучения</label>
+                                    <label class="checkbox nomargin"><input type="checkbox" name="letter"><i></i>Я хочу получать рассылку новостей системы на мой электронный адрес</label>
+                                </div>
+
                                  <div class="form-group margin-top-30">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">
@@ -110,11 +136,10 @@
                                     </div>
                                 </div>
                             </fieldset>
-                               
+                                <footer>
+                                    Уже зарегистрированы? <a href="/login"><strong>Авторизуйтесь!</strong></a>
+                                </footer>
                         </form>
-                    </div>
-
-                </div>
             </div>
         </div>
 

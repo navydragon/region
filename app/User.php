@@ -63,5 +63,10 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough('App\File_bind','App\File')->where('bind_type','=',$type);
     }
+
+    public function short_name()
+    {
+        return $this->name;
+    }
 }
 

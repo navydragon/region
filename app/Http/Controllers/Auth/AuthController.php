@@ -48,11 +48,22 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = array(
+            'email.required' => 'Поле "Адрес электронной почты" должно быть заполнено"',
+            'email.unique' => 'Данный электронный адрес уже существует',
+            'email.email' => 'Электронный адрес введен некорректно',
+            'surname.required' => 'Поле "Фамилия" должно быть заполнено',
+            'name.required' => 'Поле "Имя" должно быть заполнено',
+            'password.required' => 'Поле "Пароль" должно быть заполнено',
+            'password.min' => 'Поле "Пароль" должно включать 6 или более символов',
+            'password.confirmed' => 'Введенные пароли на совпадают',
+        );
         return Validator::make($data, [
+            'surname' => 'required|max:255',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-        ]);
+        ],$messages);
     }
 
     /**
