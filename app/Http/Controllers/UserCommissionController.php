@@ -13,6 +13,7 @@ use App\Task;
 use App\Test;
 use App\Question;
 use App\Answer;
+use App\Test_user;
 
 
 class UserCommissionController extends Controller
@@ -75,6 +76,9 @@ class UserCommissionController extends Controller
             $xml->addAttribute('version', '1.0');
             $xml->addChild('datetime', date('Y-m-d H:i:s'));
             
+            $_test = $xml->addChild('test', $test->title);
+            $_test->addAttribute('id',$test->id);
+
             $_questions =  $xml->addChild('questions');
             $earned = 0; //заработанные баллы
             $total = $test->questions->count();
@@ -143,14 +147,13 @@ class UserCommissionController extends Controller
 
             //создаем запись о тесте
             Auth::user()->test_user_pivot()->attach($test->id, ['earned' => $earned,'total' => $total]);
-            $id = Auth::user()->test_user_pivot()->get()->last()->pivot->id;
-
+            $id = Auth::user()->test_user_pivot()->where('test_id','=',$test->id)->get()->last()->pivot->id;
 
             $xml->saveXML('tests/'.$id.'.xml');
 
             
     //return $response;
       //return $request->toArray();
-       return back();
+       return $id;
     }
 }
