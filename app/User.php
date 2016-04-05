@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+       'surname', 'name','fathername', 'email', 'password','filial_id','job_id','phone','mailing'
     ];
 
     /**
@@ -54,6 +54,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Survey_question', 'survey_question_user')->withPivot('answer')->withTimestamps();
     }
 
+    public function test_user_pivot()
+    {
+        return $this->belongsToMany('App\Test', 'test_user')->withPivot('id')->withPivot('earned')->withPivot('total')->withTimestamps();
+    }
+
     public function files()
     {
         return $this->hasMany('App\File');
@@ -66,7 +71,7 @@ class User extends Authenticatable
 
     public function short_name()
     {
-        return $this->name;
+        return $this->surname." ".mb_substr($this->name,0,1,'UTF-8').". ".mb_substr($this->fathername,0,1,'UTF-8').".";
     }
 }
 

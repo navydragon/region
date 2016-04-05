@@ -14,6 +14,7 @@ use App\Test;
 use App\Question;
 use App\Answer;
 
+
 class UserCommissionController extends Controller
 {
      public function join($id)
@@ -69,7 +70,7 @@ class UserCommissionController extends Controller
     }
 
     public function test_store(Commission $commission,Test $test, Request $request)
-    {
+    { 
         $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="utf-8"?><test></test>');
             $xml->addAttribute('version', '1.0');
             $xml->addChild('datetime', date('Y-m-d H:i:s'));
@@ -136,16 +137,20 @@ class UserCommissionController extends Controller
 
             $result = $xml->addChild('earned',$earned);
             $result = $xml->addChild('total',$total);
-            //$person = $xml->addChild('total',$request->questions->length);
 
             $user = $xml->addChild('user');
             $user->addChild('id', Auth::user()->id);
 
-            $xml->saveXML('tests/test.xml');
+            //создаем запись о тесте
+            Auth::user()->test_user_pivot()->attach($test->id, ['earned' => $earned,'total' => $total]);
+            $id = Auth::user()->test_user_pivot()->get()->last()->pivot->id;
+
+
+            $xml->saveXML('tests/'.$id.'.xml');
 
             
     //return $response;
-      return $request->toArray();
-       
+      //return $request->toArray();
+       return back();
     }
 }

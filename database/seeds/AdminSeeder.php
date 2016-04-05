@@ -11,11 +11,20 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+         DB::table('filials')->insert(['name'=>'МИИТ']);
+         DB::table('filials')->insert(['name'=>'Дирекция тяги']);
+         DB::table('jobs')->insert(['name'=>'Главный инженер']);
+         DB::table('jobs')->insert(['name'=>'НБТ']);
+
          factory(App\User::class, 1)->create([
-            'name' => 'Nikolay Grinchar',
+            'surname' => 'Гринчар',
+            'name' => 'Николай',
+            'fathername' => 'Николаевич',
             'email' => 'ief07@bk.ru',
             'password' => bcrypt('111111'),
             'remember_token' => str_random(10),
+            'filial_id' => 1,
+            'job_id' => 1,
             ]);
       
 

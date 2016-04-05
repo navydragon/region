@@ -13,6 +13,11 @@ class Test extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function test_user_pivot()
+    {
+        return $this->belongsToMany('App\User', 'test_user')->withPivot('earned')->withPivot('total')->withTimestamps();
+    }
+
 
     public function find_in_stage($stage)
     {

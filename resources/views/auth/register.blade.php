@@ -1,3 +1,6 @@
+@inject('filials','App\Filial')
+@inject('jobs','App\Job')
+
 @extends('layouts.app')
 
 @section('title')
@@ -43,7 +46,7 @@
                                     </label>
                                 </div>
                                 
-                                <div class="row nomargin">
+                                <div class="col-md-12 margin-top-10 nopadding">
                                     <div class="col-md-6{{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label>Адрес электронной почты *</label>
                                         <label class="input">
@@ -67,7 +70,7 @@
 
                                     </div>
                                 </div>
-                                <div class="row nomargin">
+                                <div class="col-md-12 margin-top-10 nopadding">
                                     <div class="col-md-6{{ $errors->has('password') ? ' has-error' : '' }}">
                                         <label>Пароль *</label>
                                         <label class="input">
@@ -97,35 +100,53 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 margin-top-10"><label>Выберите филиал или (если филиала нет в списке) введите его в поле справа</label></div>
+                                <div class="col-md-12 margin-top-10"><label>Укажите головной филиал или (если филиала нет в списке) введите его в поле справа</label></div>
                                 <div class="row nomargin">
                                     <label class="select margin-bottom-10 col-md-6">
                                         <select name="filial" class="form-control select2">
-                                            <option value="0" selected="" disabled="">Выберите филиал...</option>
+                                            <option value="0" selected>Выберите филиал...</option>
+                                            @foreach ($filials->get() as $filial)
+                                                <option value="{{ $filial->id }}" {!! old('filial') == $filial->id ? 'selected="selected"' : '' !!}>
+                                                    {{ $filial->name }}
+                                                </option>
+                                            @endforeach
+                                            
                                         </select>
                                     </label>
 
                                     <label class="input col-md-6">
-                                        <input name="new_filial" type="text" placeholder="Другой филиал">
+                                        <input name="new_filial" value="{{old('new_filial')}}" type="text" placeholder="Другой филиал">
                                     </label>
                                 </div>
 
-                                <div class="col-md-12"><label>Выберите должность или (если должности нет в списке) введите ее в поле справа</label></div>
+                                <div class="col-md-12"><label>Укажите должность или (если должности нет в списке) введите ее в поле справа</label></div>
                                 <div class="row nomargin">
                                     <label class="select margin-bottom-10 col-md-6">
-                                        <select name="filial" class="form-control select2">
-                                            <option value="0" selected="" disabled="">Выберите должность...</option>
+                                        <select name="job" class="form-control select2">
+                                            <option value="0" selected>Выберите должность...</option>
+                                            @foreach ($jobs->get() as $job)
+                                                <option value="{{ $job->id }}" {!! old('job') == $job->id ? 'selected="selected"' : '' !!}>
+                                                    {{ $job->name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </label>
 
                                     <label class="input col-md-6">
-                                        <input name="new_filial" type="text" placeholder="Другая должность">
+                                        <input name="new_job" type="text" value="{{old('new_job')}}" placeholder="Другая должность">
                                     </label>
                                 </div>
 
-                                <div class="margin-top-30">
-                                    <label class="checkbox nomargin"><input class="checked-agree" type="checkbox" name="agree"><i></i>Я даю согласие на обработку моих персональных данных в рамках проведения обучения</label>
-                                    <label class="checkbox nomargin"><input type="checkbox" name="letter"><i></i>Я хочу получать рассылку новостей системы на мой электронный адрес</label>
+                                <div class="margin-top-30 {{ $errors->has('agree') ? ' has-error' : '' }}">
+                                    <label class="checkbox nomargin"><input class="checked-agree" type="checkbox" name="agree" {!! old('agree') == true ? 'checked' : '' !!}>
+                                    <i></i>Я даю согласие на обработку моих персональных данных в рамках проведения обучения</label>
+                                    @if ($errors->has('agree'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('agree') }}</strong>
+                                            </span>
+                                    @endif
+                                    <label class="checkbox nomargin"><input type="checkbox" name="mailing" {!! old('mailing') == true ? 'checked' : '' !!}>
+                                        <i></i>Я хочу получать рассылку новостей системы на мой электронный адрес</label>
                                 </div>
 
                                  <div class="form-group margin-top-30">

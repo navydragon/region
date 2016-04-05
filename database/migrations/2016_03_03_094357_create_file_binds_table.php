@@ -17,7 +17,6 @@ class CreateFileBindsTable extends Migration
             $table->integer('file_id')->unsigned();
             $table->string('bind_type');
             $table->integer('type_id');
-            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('file_id')
@@ -26,10 +25,6 @@ class CreateFileBindsTable extends Migration
                   ->onDelete('cascade');
 
 
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');      
         });
     }
 

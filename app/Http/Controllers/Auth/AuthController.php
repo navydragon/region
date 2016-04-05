@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Filial;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -57,12 +58,14 @@ class AuthController extends Controller
             'password.required' => 'Поле "Пароль" должно быть заполнено',
             'password.min' => 'Поле "Пароль" должно включать 6 или более символов',
             'password.confirmed' => 'Введенные пароли на совпадают',
+            'agree.required' => 'Необходимо дать согласие на обработку персональных данных',
         );
         return Validator::make($data, [
             'surname' => 'required|max:255',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'agree' =>'required'
         ],$messages);
     }
 
@@ -74,10 +77,24 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        if (strlen(trim($data['new_filial'])) > 0 )
+        {
+          $filial = Filial::create(['name' => $data['new_filial']]);
+          $filial = $filial->id;
+        }else{
+            $filial = $data['filial'];
+        }
+        if(isset($data['mailing']))  {$mailing=true;}else{$mailing=false;}
         return User::create([
+            'surname' => $data['surname'],
             'name' => $data['name'],
+            'fathername' => $data['fathername'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
+            'filial_id' => $filial,
+            'job_id' => $data['job'],
+            'mailing' => $mailing,
         ]);
     }
 }

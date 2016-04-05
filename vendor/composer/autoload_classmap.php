@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddUsersForeigns' => $baseDir . '/database/migrations/2016_04_04_191509_add_users_foreigns.php',
     'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'CreateAnswersTable' => $baseDir . '/database/migrations/2016_03_09_115107_create_answers_table.php',
     'CreateCommissionStagesTable' => $baseDir . '/database/migrations/2016_03_01_211449_create_commission_stages_table.php',
@@ -14,12 +15,15 @@ return array(
     'CreateEventsTable' => $baseDir . '/database/migrations/2016_03_01_225559_create_events_table.php',
     'CreateFileBindsTable' => $baseDir . '/database/migrations/2016_03_03_094357_create_file_binds_table.php',
     'CreateFilesTable' => $baseDir . '/database/migrations/2016_03_02_221133_create_files_table.php',
+    'CreateFilialsTable' => $baseDir . '/database/migrations/2016_04_04_184721_create_filials_table.php',
+    'CreateJobsTable' => $baseDir . '/database/migrations/2016_04_04_191341_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateQuestionsTable' => $baseDir . '/database/migrations/2016_03_09_083649_create_questions_table.php',
     'CreateSurveyQuestionsTable' => $baseDir . '/database/migrations/2016_02_28_205838_create_survey_questions_table.php',
     'CreateSurveysTable' => $baseDir . '/database/migrations/2016_02_23_220010_create_surveys_table.php',
     'CreateTasksTable' => $baseDir . '/database/migrations/2016_03_07_222140_create_tasks_table.php',
     'CreateTestsTable' => $baseDir . '/database/migrations/2016_03_08_182759_create_tests_table.php',
+    'CreateUserTestsTable' => $baseDir . '/database/migrations/2016_04_04_225051_create_user_tests_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -527,5 +531,6 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'SurveyquestionUsers' => $baseDir . '/database/migrations/2016_03_24_122957_surveyquestion_users.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
+    'TestsUsersPivot' => $baseDir . '/database/migrations/2016_04_04_232647_tests_users_pivot.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
 );
