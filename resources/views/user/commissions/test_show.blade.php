@@ -9,8 +9,14 @@
 		<div class="container">
 			<h4>Описание:</h4>
 			<p>{{ $test->description}}</p>
-			<p>Время на тест: </p>
-			<p>Количество вопросов:</p>
+			<p>Количество вопросов:
+			@if($test->question_count == 0)
+				{{$test->questions()->count()}}
+			@else
+				{{$test->question_count}}
+			@endif
+			</p>
+			<p>Время на тест: {{$test->duration}} мин. </p>
 		</div>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Начать тест</button>
 
@@ -30,8 +36,10 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Вопрос <span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<? $i=1; ?>
 								@foreach($test->questions as $question)
-								<li><a href="#q{{$question->id}}" tabindex="-1" data-toggle="tab" class="drop-link">{{$question->title}}</a></li>
+								<li><a href="#q{{$i}}" tabindex="-1" data-toggle="tab" class="drop-link">{{$question->title}}</a></li>
+								<? $i++; ?>	
 								@endforeach
 							</ul>
 						</li>
@@ -42,7 +50,7 @@
 
 						<? $i=1; ?>
 						@foreach($test->questions as $question)
-							<div class="tab-pane fade" id="q{{$question->id}}">
+							<div class="tab-pane fade" id="q{{$i}}">
 								<h4>{{$question->title}} <span class="small">(Правильных ответов: {{$question->right_answers->count()}})</span><span class="pull-right">Вопрос № {{$i}} из {{$test->questions()->count()}}</span></h4>
 								@if ($question->right_answers->count()==1)
 
@@ -75,12 +83,37 @@
 					</div>
 				{!! Form::close() !!}
 				</div>
-
+			
 			</div>
 		</div>
 	</div>
 	</section>
 
+	@if ($attempts->count() > 0)
+		<section>
+			<h4>Предыдущие попытки:</h4>
+			<table class="table table-bordered table-striped">
+	        	<thead>
+	            	<tr>
+		                <th><i></i> Дата и время тестирования</th>
+		                <th><i></i> Результат, баллов</th>
+		                <th><i></i> Результат, %</th>
+		                <th><i></i> Подробнее</th>
+		            </tr>
+	        	</thead>
+	        	<tbody>
+	        		@foreach($attempts->get() as $attempt)
+	        			<tr>
+	        				<td>{{date('d.m.Y H:i:s', strtotime($attempt->pivot->end_at))}}</td>
+	        				<td>{{$attempt->pivot->earned}}/{{$attempt->pivot->total}}</td>
+	        				<td>{{round($attempt->pivot->earned/$attempt->pivot->total * 100)}}%</td>
+	        				<td><a class="btn btn-default btn-xs" href=""><i class="fa fa-eye"></i>Просмотр</a></td>
+	        			</tr>
+	        		@endforeach
+	        	</tbody>
+        	</table>
+		</section>
+	@endif
 @stop
 
 
@@ -133,8 +166,6 @@ $(document).ready(function() {
 		$("li.next").removeClass("active");
 		$("li.previous").removeClass("active");
 		arr = this.href.split('#q');
-
-
 		if ($(this).attr('class')=="drop-link") 
 		{				
 			next_id = questions[parseInt(arr[1])-1].id;

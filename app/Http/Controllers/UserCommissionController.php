@@ -67,7 +67,8 @@ class UserCommissionController extends Controller
     {
         $commission = Commission::findOrFail($commission);
         $test = Test::findOrFail($test);
-        return view('user.commissions.test_show',compact(['commission','test'])); 
+        $attempts = Auth::user()->test_user_pivot()->where('test_id','=',$test->id);
+        return view('user.commissions.test_show',compact(['commission','test','attempts'])); 
     }
 
     public function test_store(Commission $commission,Test $test, Request $request)
@@ -154,6 +155,6 @@ class UserCommissionController extends Controller
             
     //return $response;
       //return $request->toArray();
-       return $id;
+       return back();
     }
 }
