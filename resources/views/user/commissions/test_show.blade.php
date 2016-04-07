@@ -36,10 +36,10 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Вопрос <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<? $i=1; ?>
+								<?php $i=1; ?>
 								@foreach($test->questions as $question)
 								<li><a href="#q{{$i}}" tabindex="-1" data-toggle="tab" class="drop-link">{{$question->title}}</a></li>
-								<? $i++; ?>	
+								<?php $i++; ?>	
 								@endforeach
 							</ul>
 						</li>
@@ -48,7 +48,7 @@
 				{!! Form::open(array('url' => '/commissions/{{$commission->id}}/tests/{{$test->id}}','method' => 'POST')) !!}
 					<div class="tab-content">
 
-						<? $i=1; ?>
+						<?php $i=1; ?>
 						@foreach($test->questions as $question)
 							<div class="tab-pane fade" id="q{{$i}}">
 								<h4>{{$question->title}} <span class="small">(Правильных ответов: {{$question->right_answers->count()}})</span><span class="pull-right">Вопрос № {{$i}} из {{$test->questions()->count()}}</span></h4>
@@ -70,7 +70,7 @@
 								@endforeach
 								@endif
 							</div>
-						<? $i++; ?>	
+						<?php $i++; ?>	
 						@endforeach
 					</div>
 					<div>
@@ -90,29 +90,35 @@
 	</section>
 
 	@if ($attempts->count() > 0)
-		<section>
-			<h4>Предыдущие попытки:</h4>
-			<table class="table table-bordered table-striped">
-	        	<thead>
-	            	<tr>
-		                <th><i></i> Дата и время тестирования</th>
-		                <th><i></i> Результат, баллов</th>
-		                <th><i></i> Результат, %</th>
-		                <th><i></i> Подробнее</th>
-		            </tr>
-	        	</thead>
-	        	<tbody>
-	        		@foreach($attempts->get() as $attempt)
-	        			<tr>
-	        				<td>{{date('d.m.Y H:i:s', strtotime($attempt->pivot->end_at))}}</td>
-	        				<td>{{$attempt->pivot->earned}}/{{$attempt->pivot->total}}</td>
-	        				<td>{{round($attempt->pivot->earned/$attempt->pivot->total * 100)}}%</td>
-	        				<td><a class="btn btn-default btn-xs" href=""><i class="fa fa-eye"></i>Просмотр</a></td>
-	        			</tr>
-	        		@endforeach
-	        	</tbody>
-        	</table>
-		</section>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2 class="panel-title">Предыдущие попытки</h2>
+		</div>
+		<div class="panel-body">
+			
+		</div>
+		<table class="table">
+	    	<thead>
+	        	<tr>
+	                <th><i></i> Дата и время тестирования</th>
+	                <th><i></i> Результат, баллов</th>
+	                <th><i></i> Результат, %</th>
+	                <th><i></i> Подробнее</th>
+	            </tr>
+	    	</thead>
+	    	<tbody>
+	    		@foreach($attempts->get() as $attempt)
+	    			<tr>
+	    				<td>{{date('d.m.Y H:i:s', strtotime($attempt->pivot->end_at))}}</td>
+	    				<td>{{$attempt->pivot->earned}}/{{$attempt->pivot->total}}</td>
+	    				<td>{{round($attempt->pivot->earned/$attempt->pivot->total * 100)}}%</td>
+	    				<td><a class="btn btn-default btn-xs" href="/test_attempts/{{$attempt->pivot->id}}"><i class="fa fa-eye"></i>Просмотр</a></td>
+	    			</tr>
+	    		@endforeach
+	    	</tbody>
+		</table>
+	</div>
 	@endif
 @stop
 

@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function test_user_pivot()
     {
-        return $this->belongsToMany('App\Test', 'test_user')->withPivot(['id','earned','total','start_at','end_at'])->withTimestamps();
+        return $this->belongsToMany('App\Test', 'test_users')->withPivot(['id','earned','total','start_at','end_at'])->withTimestamps();
     }
 
     public function files()

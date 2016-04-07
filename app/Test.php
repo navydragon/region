@@ -15,7 +15,7 @@ class Test extends Model
 
     public function test_user_pivot()
     {
-        return $this->belongsToMany('App\User', 'test_user')->withPivot('earned')->withPivot('total')->withTimestamps();
+        return $this->belongsToMany('App\User', 'test_users')->withPivot('earned')->withPivot('total')->withTimestamps();
     }
 
 

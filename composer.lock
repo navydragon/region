@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "098fe5596de183cc56c94246d0703c7e",
-    "content-hash": "207e90d272c98fb5b5d438459dc4934c",
+    "hash": "85606148cf02a214cdabd408fccdba80",
+    "content-hash": "359300b1b808473ac08a7a350d638a3a",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -829,6 +829,61 @@
                 "schedule"
             ],
             "time": "2016-01-26 21:23:30"
+        },
+        {
+            "name": "nathanmac/parser",
+            "version": "v3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nathanmac/Parser.git",
+                "reference": "776ba4a2d23c0e7a12754c320bfcf52051652397"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nathanmac/Parser/zipball/776ba4a2d23c0e7a12754c320bfcf52051652397",
+                "reference": "776ba4a2d23c0e7a12754c320bfcf52051652397",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/yaml": "~2.0|~3.0"
+            },
+            "require-dev": {
+                "illuminate/support": "~5.0",
+                "mockery/mockery": "0.9.3",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nathanmac\\Utilities\\Parser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nathan Macnamara",
+                    "email": "hola@nathanmac.com"
+                }
+            ],
+            "description": "Simple PHP Parser Utility Library for API Development",
+            "homepage": "https://github.com/nathanmac/Parser",
+            "keywords": [
+                "api",
+                "json",
+                "parser",
+                "xml"
+            ],
+            "time": "2016-02-06 15:34:37"
         },
         {
             "name": "nesbot/carbon",
@@ -1917,6 +1972,55 @@
                 "dump"
             ],
             "time": "2016-03-10 10:34:12"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "0047c8366744a16de7516622c5b7355336afae96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0047c8366744a16de7516622c5b7355336afae96",
+                "reference": "0047c8366744a16de7516622c5b7355336afae96",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-04 07:55:57"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3145,55 +3249,6 @@
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
             "time": "2016-03-23 13:23:25"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "v3.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "0047c8366744a16de7516622c5b7355336afae96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/0047c8366744a16de7516622c5b7355336afae96",
-                "reference": "0047c8366744a16de7516622c5b7355336afae96",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:55:57"
         }
     ],
     "aliases": [],

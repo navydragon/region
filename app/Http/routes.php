@@ -37,7 +37,6 @@ Route::group(['middleware' => ['web']], function ()
 });
 
 
-
 Route::group(['middleware' => ['web','auth']], function () 
 {
 	Route::get('/home', 'HomeController@index');
@@ -81,5 +80,10 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::get('commissions/{commission}/tasks/{task}','UserCommissionController@task_show');
 	Route::get('commissions/{commission}/tests/{test}','UserCommissionController@test_show');
 	Route::post('commissions/{commission}/tests/{test}','UserCommissionController@test_store');
+	
+
+	Route::get('test_attempts/{test_attempt}','TestAttemptsController@show');
+
+
 });
 

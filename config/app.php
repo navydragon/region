@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
+        Nathanmac\Utilities\Parser\ParserServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -206,7 +207,7 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
-
+        'Parser' => Nathanmac\Utilities\Parser\Facades\Parser::class,
     ],
 
 ];

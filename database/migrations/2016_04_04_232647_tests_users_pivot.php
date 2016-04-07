@@ -12,7 +12,7 @@ class TestsUsersPivot extends Migration
      */
     public function up()
     {
-        Schema::create('test_user', function (Blueprint $table) {
+        Schema::create('test_users', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();;
             $table->integer('test_id')->unsigned()->index();;
