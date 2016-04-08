@@ -60,7 +60,8 @@ class CommissionsController extends Controller
             $file->file_binds()->save($file_bind);
 
         }
-
+        
+         Auth::user()->commissions_pivot()->attach($commission->id);
          flash()->success('Комиссия успешно создана!');
 
         return redirect('admin/commissions');

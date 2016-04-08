@@ -14,14 +14,16 @@ use App\Test;
 use App\Question;
 use App\Answer;
 use App\Test_user;
+use Activity;
+use App\CommissionLog;
 
 class UserCommissionController extends Controller
 {
     public function join($id)
     {
         $commission = Commission::findOrFail($id);
-        Auth::user()->commissions_pivot()->attach($commission);
-
+        Auth::user()->commissions_pivot()->attach($commission,['role_id' => 4]);
+        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'join','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' присоединился к комиссии.']);  
         return redirect('commissions/'.$id);
     }
 
@@ -29,6 +31,7 @@ class UserCommissionController extends Controller
     {
         Auth::user()->commissions_pivot()->detach($commission);
         return back();
+        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'join','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' покинул комиссию.']);
     }
 
     public function show($id)
@@ -44,12 +47,16 @@ class UserCommissionController extends Controller
         return view('user.commissions.survey_show', compact(['commission', 'survey']));
     }
 
-    public function survey_store(Request $request)
+    public function survey_store($survey, Request $request)
     {
+        $survey = Survey::findOrFail($survey);
         foreach ($request->sq as $key => $value) {
             Auth::user()->survey_questions_pivot()->detach($key);
             Auth::user()->survey_questions_pivot()->attach($key, ['answer' => $value]);
         }
+
+        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'survey','type_id'=>$survey->id,'text'=> Auth::user()->short_name().' заполнил/отредактировал анкету '.$survey->title.'.']);
+
         return redirect('commissions/'.$request->commission);
     }
 
@@ -133,7 +140,8 @@ class UserCommissionController extends Controller
         $id = Auth::user()->test_user_pivot()->where('test_id', '=', $test->id)->get()->last()->pivot->id;
 
         $xml->saveXML('tests/'.$id.'.xml');
-
+        
+        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'test','type_id'=>$test->id,'text'=> Auth::user()->short_name().' закончил тест '.$test->title.'.']);
             
     //return $response;
       //return $request->toArray();

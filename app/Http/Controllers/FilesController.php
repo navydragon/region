@@ -8,8 +8,9 @@ use App\Http\Requests\CommissionRequest;
 use App\Http\Controllers\Controller;
 use App\File;
 use App\File_bind;
+use App\CommissionLog;
 use Auth;
-
+use Activity;
 
 class FilesController extends Controller
 {
@@ -31,6 +32,11 @@ class FilesController extends Controller
             $file_bind->type_id =  $request->id;
             $file->file_binds()->save($file_bind);
             flash()->success('Файл успешно добавлен!');
+
+            if (isset($request->commission))
+            {
+                $log = CommissionLog::create(['commission_id'=>$request->commission,'user_id'=>Auth::user()->id,'type'=>$request->type,'type_id'=>$request->id,'text'=> Auth::user()->short_name().' подгрузил файл.']);
+            }
         }
 
         return back();

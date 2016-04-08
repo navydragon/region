@@ -16,6 +16,11 @@ class AdminSeeder extends Seeder
          DB::table('jobs')->insert(['name'=>'Главный инженер']);
          DB::table('jobs')->insert(['name'=>'НБТ']);
 
+         DB::table('commission_roles')->insert(['name'=>'Супер админ']);
+         DB::table('commission_roles')->insert(['name'=>'Ответственный']);
+         DB::table('commission_roles')->insert(['name'=>'Эксперт']);
+         DB::table('commission_roles')->insert(['name'=>'Участник']);
+
          factory(App\User::class, 1)->create([
             'surname' => 'Гринчар',
             'name' => 'Николай',
@@ -65,5 +70,7 @@ class AdminSeeder extends Seeder
            factory(App\Event::class, 1)->create(['commission_stage_id'=>2,'type'=>'test','type_id'=>'1']); 
            factory(App\Event::class, 1)->create(['commission_stage_id'=>2,'type'=>'test','type_id'=>'2']); 
            factory(App\Event::class, 1)->create(['commission_stage_id'=>2,'type'=>'task','type_id'=>'2']);
+
+           DB::table('commission_user')->insert(['user_id'=>1,'commission_id'=>1,'role_id'=>2]);
     }   
 }

@@ -14,8 +14,8 @@ class TestsUsersPivot extends Migration
     {
         Schema::create('test_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();;
-            $table->integer('test_id')->unsigned()->index();;
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('test_id')->unsigned()->index();
             $table->integer('earned');
             $table->integer('total');
             $table->datetime('start_at');
@@ -41,6 +41,6 @@ class TestsUsersPivot extends Migration
      */
     public function down()
     {
-        Schema::drop('test_user');
+        Schema::drop('test_users');
     }
 }

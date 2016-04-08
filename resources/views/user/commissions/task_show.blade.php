@@ -30,7 +30,7 @@
 			</span>
 		</div>
 		<div class="panel-body">
-				{!! Form::open(array('url' => 'admin/files/?type=user_task&id='.$task->id,'method' => 'POST','files'=>true)) !!}
+				{!! Form::open(array('url' => 'admin/files/?type=user_task&id='.$task->id.'&commission='.$commission->id,'method' => 'POST','files'=>true)) !!}
 					<div class="form-group">
 						{!! Form::label('filename', 'Название файла:') !!}
 						{!! Form::text('filename',null, ['class' => 'form-control']) !!}

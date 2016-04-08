@@ -3300,41 +3300,37 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "nathanmac/parser",
-        "version": "v3.11",
-        "version_normalized": "3.11.0.0",
+        "name": "spatie/activitylog",
+        "version": "2.4.2",
+        "version_normalized": "2.4.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/nathanmac/Parser.git",
-            "reference": "776ba4a2d23c0e7a12754c320bfcf52051652397"
+            "url": "https://github.com/spatie/activitylog.git",
+            "reference": "b734982a3a238f0b5371a5f9230ffce25a1ef4ab"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nathanmac/Parser/zipball/776ba4a2d23c0e7a12754c320bfcf52051652397",
-            "reference": "776ba4a2d23c0e7a12754c320bfcf52051652397",
+            "url": "https://api.github.com/repos/spatie/activitylog/zipball/b734982a3a238f0b5371a5f9230ffce25a1ef4ab",
+            "reference": "b734982a3a238f0b5371a5f9230ffce25a1ef4ab",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.0",
-            "symfony/yaml": "~2.0|~3.0"
+            "illuminate/support": "5.*",
+            "php": ">=5.4.0"
         },
         "require-dev": {
-            "illuminate/support": "~5.0",
-            "mockery/mockery": "0.9.3",
-            "phpunit/phpunit": "4.*",
-            "scrutinizer/ocular": "^1.1"
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-02-06 15:34:37",
+        "time": "2016-03-23 19:16:40",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.x-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Nathanmac\\Utilities\\Parser\\": "src/"
+            "classmap": [
+                "src/migrations"
+            ],
+            "psr-0": {
+                "Spatie\\Activitylog\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -3343,17 +3339,117 @@
         ],
         "authors": [
             {
-                "name": "Nathan Macnamara",
-                "email": "hola@nathanmac.com"
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be"
             }
         ],
-        "description": "Simple PHP Parser Utility Library for API Development",
-        "homepage": "https://github.com/nathanmac/Parser",
+        "description": "A very simple activity logger to monitor the users of your website or application",
+        "homepage": "https://github.com/spatie/activitylog",
         "keywords": [
-            "api",
-            "json",
-            "parser",
-            "xml"
+            "activity",
+            "laravel",
+            "log",
+            "user"
+        ]
+    },
+    {
+        "name": "laracasts/generators",
+        "version": "1.1.3",
+        "version_normalized": "1.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/Laravel-5-Generators-Extended.git",
+            "reference": "d6afcc60dff846980393d59f6df2074b8a297b08"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/Laravel-5-Generators-Extended/zipball/d6afcc60dff846980393d59f6df2074b8a297b08",
+            "reference": "d6afcc60dff846980393d59f6df2074b8a297b08",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "~2.1"
+        },
+        "time": "2015-12-31 18:44:32",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Laracasts\\Generators\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Extend Laravel 5's generators.",
+        "keywords": [
+            "generators",
+            "laravel"
+        ]
+    },
+    {
+        "name": "laracasts/testdummy",
+        "version": "2.3.2",
+        "version_normalized": "2.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/TestDummy.git",
+            "reference": "ba986a66b6f4a1e149355357353af3072d5521ee"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/TestDummy/zipball/ba986a66b6f4a1e149355357353af3072d5521ee",
+            "reference": "ba986a66b6f4a1e149355357353af3072d5521ee",
+            "shasum": ""
+        },
+        "require": {
+            "fzaninotto/faker": "~1.4",
+            "illuminate/support": "~4.0|~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "illuminate/database": "~4.0|~5.0",
+            "phpspec/phpspec": "~2.0",
+            "phpunit/phpunit": "~4.7@dev"
+        },
+        "time": "2015-04-27 15:56:12",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Laracasts\\TestDummy\\": "src/"
+            },
+            "files": [
+                "src/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Easy test stubs",
+        "keywords": [
+            "factorygirl",
+            "laravel",
+            "stubs",
+            "testing"
         ]
     }
 ]
