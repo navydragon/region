@@ -118,11 +118,13 @@
                                                 КОМИССИИ
                                             </a>
                                         </li>
-                                        <li><!-- FEATURES -->
-                                            <a href="/admin">
-                                                АДМИНИСТРИРОВАНИЕ
-                                            </a>
-                                        </li>
+                                        @if (Auth::user()->is_admin() == true)
+                                            <li><!-- FEATURES -->
+                                                <a href="/admin">
+                                                    АДМИНИСТРИРОВАНИЕ
+                                                </a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>

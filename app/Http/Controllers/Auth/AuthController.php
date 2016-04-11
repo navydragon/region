@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Filial;
+use App\Job;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -84,6 +85,15 @@ class AuthController extends Controller
         }else{
             $filial = $data['filial'];
         }
+
+        if (strlen(trim($data['new_job'])) > 0 )
+        {
+          $job = Job::create(['name' => $data['new_job']]);
+          $job = $job->id;
+        }else{
+            $job = $data['job'];
+        }
+
         if(isset($data['mailing']))  {$mailing=true;}else{$mailing=false;}
         return User::create([
             'surname' => $data['surname'],
@@ -93,7 +103,7 @@ class AuthController extends Controller
             'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
             'filial_id' => $filial,
-            'job_id' => $data['job'],
+            'job_id' => $job,
             'mailing' => $mailing,
         ]);
     }

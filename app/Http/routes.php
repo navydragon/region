@@ -43,6 +43,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::get('/admin', function () {return view('admin/index');});
 
 	Route::resource('admin/commissions','CommissionsController');
+	Route::resource('admin/commissions/conduct','CommissionsConductController');
 	
 	Route::resource('admin/surveys','SurveysController');
 	Route::resource('admin/tasks','TasksController');
@@ -59,6 +60,9 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::post('admin/commissions/{commission}/commission_stages', 'Commission_stagesController@store'); 
 	Route::delete('admin/commission_stages/{commission_stage}', 'Commission_stagesController@destroy');
 
+	Route::get('admin/commissions_conduct','CommissionsConductController@index');
+	Route::get('admin/commissions_conduct/{commission}','CommissionsConductController@show');
+
 	Route::post('admin/files', 'FilesController@store'); 
 	Route::delete('admin/files/{file}', 'FilesController@destroy');
 
@@ -74,6 +78,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::patch('admin/answers/{answer}','AnswersController@update');
 
 	Route::get('commissions/{commission}/join','UserCommissionController@join');
+	Route::get('commissions/{commission}/leave','UserCommissionController@leave');
 	Route::get('commissions/{commission}','UserCommissionController@show');
 	Route::get('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_show');
 	Route::post('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_store');

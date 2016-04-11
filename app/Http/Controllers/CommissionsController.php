@@ -13,7 +13,7 @@ use App\Commission_stage;
 use App\File;
 use App\File_bind;
 use Auth;
-
+use App\User;
 
 class CommissionsController extends Controller
 {
@@ -61,7 +61,8 @@ class CommissionsController extends Controller
 
         }
         
-         Auth::user()->commissions_pivot()->attach($commission->id);
+         Auth::user()->commissions_pivot()->attach($commission->id,['role_id'=>2]);
+         User::find(1)->commissions_pivot()->attach($commission->id,['role_id'=>1]);
          flash()->success('Комиссия успешно создана!');
 
         return redirect('admin/commissions');

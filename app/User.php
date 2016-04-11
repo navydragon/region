@@ -73,5 +73,10 @@ class User extends Authenticatable
     {
         return $this->surname." ".mb_substr($this->name,0,1,'UTF-8').". ".mb_substr($this->fathername,0,1,'UTF-8').".";
     }
+
+    public function is_admin()
+    {
+        if (($this->global_role_id == 2)||($this->global_role_id == 3)) {return true;}else{return false;}
+    }
 }
 

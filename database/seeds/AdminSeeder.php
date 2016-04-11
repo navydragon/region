@@ -21,6 +21,10 @@ class AdminSeeder extends Seeder
          DB::table('commission_roles')->insert(['name'=>'Эксперт']);
          DB::table('commission_roles')->insert(['name'=>'Участник']);
 
+         DB::table('global_roles')->insert(['name'=>'Пользователь']);
+         DB::table('global_roles')->insert(['name'=>'Ответственный админ']);
+         DB::table('global_roles')->insert(['name'=>'Супер админ']);
+
          factory(App\User::class, 1)->create([
             'surname' => 'Гринчар',
             'name' => 'Николай',
@@ -30,6 +34,7 @@ class AdminSeeder extends Seeder
             'remember_token' => str_random(10),
             'filial_id' => 1,
             'job_id' => 1,
+            'global_role_id' => 3
             ]);
       
 

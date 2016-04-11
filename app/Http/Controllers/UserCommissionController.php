@@ -27,11 +27,12 @@ class UserCommissionController extends Controller
         return redirect('commissions/'.$id);
     }
 
-    public function leave($commission)
+    public function leave($id)
     {
+        $commission = Commission::findOrFail($id);
         Auth::user()->commissions_pivot()->detach($commission);
-        return back();
-        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'join','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' покинул комиссию.']);
+        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'leave','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' покинул комиссию.']);
+        return redirect('commissions/'.$id);
     }
 
     public function show($id)
@@ -47,8 +48,9 @@ class UserCommissionController extends Controller
         return view('user.commissions.survey_show', compact(['commission', 'survey']));
     }
 
-    public function survey_store($survey, Request $request)
+    public function survey_store($commission, $survey, Request $request)
     {
+        $commission = Commission::findOrFail($commission);
         $survey = Survey::findOrFail($survey);
         foreach ($request->sq as $key => $value) {
             Auth::user()->survey_questions_pivot()->detach($key);

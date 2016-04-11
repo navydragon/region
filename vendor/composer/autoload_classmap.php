@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddCommissionUserTable' => $baseDir . '/database/migrations/2016_04_08_114609_add_commission_user_table.php',
+    'AddGlobalRoleIdToUsers' => $baseDir . '/database/migrations/2016_04_11_114625_add_global_role_id_to_users.php',
     'AddUsersForeigns' => $baseDir . '/database/migrations/2016_04_04_191509_add_users_foreigns.php',
     'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'CreateActivityLogTable' => $baseDir . '/database/migrations/2016_04_08_084241_create_activity_log_table.php',
@@ -20,6 +21,7 @@ return array(
     'CreateFileBindsTable' => $baseDir . '/database/migrations/2016_03_03_094357_create_file_binds_table.php',
     'CreateFilesTable' => $baseDir . '/database/migrations/2016_03_02_221133_create_files_table.php',
     'CreateFilialsTable' => $baseDir . '/database/migrations/2016_04_04_184721_create_filials_table.php',
+    'CreateGlobalRolesTable' => $baseDir . '/database/migrations/2016_04_11_114442_create_global_roles_table.php',
     'CreateJobsTable' => $baseDir . '/database/migrations/2016_04_04_191341_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateQuestionsTable' => $baseDir . '/database/migrations/2016_03_09_083649_create_questions_table.php',

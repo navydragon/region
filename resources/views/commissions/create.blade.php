@@ -6,7 +6,8 @@
 
 @section('breadcrumb')
 	<li><a href="/admin/">Главная</a></li>
-	<li><a href="/admin/commissions">Комиссии</a></li>
+	<li>Комиссии</li>
+	<li><a href="/admin/commissions">Подготовка</a></li>
 	<li class="active">Новая</li>
 @stop
 

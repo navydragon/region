@@ -53,10 +53,14 @@
 							</a>
 						</li>
 						<li>
-							<a href="/admin/commissions">
-								<i class="main-icon fa fa-table"></i>
-								<span class="label label-success pull-right">2</span> <span>Комиссии</span>
+							<a href="#">
+								<i class="fa fa-menu-arrow pull-right"></i>
+								<i class="main-icon fa fa-graduation-cap"></i> <span>Комиссии</span>
 							</a>
+							<ul><!-- submenus -->
+								<li><a href="/admin/commissions"><span>Подготовка</span></a></li>
+							<li><a href="/admin/commissions_conduct"><span>Проведение</span></a></li>
+							</ul>
 						</li>
 						<li>
 							<a href="#">

@@ -33,7 +33,8 @@
                     </td>
                     <td>
                         @if (Auth::user()->commissions_pivot()->find($commission->id))
-                            <a href="commissions/{{$commission->id}}/"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Войти</a>
+                            <a href="commissions/{{$commission->id}}"  class="btn btn-primary btn-xs margin-bottom-6"><i class="fa fa-plus"></i>&nbsp;&nbsp;Войти</a>
+                            <a href="commissions/{{$commission->id}}/leave"  class="btn btn-primary btn-xs"><i class="fa fa-minus"></i>&nbsp;&nbsp;Покинуть комиссию</a><br>
                         @else
                             <a href="commissions/{{$commission->id}}/join"  class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;&nbsp;Присоединиться</a>
                         @endif
