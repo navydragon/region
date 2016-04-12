@@ -19,30 +19,35 @@ use App\CommissionLog;
 
 class UserCommissionController extends Controller
 {
-    public function join($id)
-    {
-        $commission = Commission::findOrFail($id);
-        Auth::user()->commissions_pivot()->attach($commission,['role_id' => 4]);
-        $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'join','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' присоединился к комиссии.']);  
-        return redirect('commissions/'.$id);
+    public function join($commission)
+    {   
+        if (Auth::user()->in_commission($commission) == 0) 
+        {
+            $commission = Commission::findOrFail($commission);
+            Auth::user()->commissions_pivot()->attach($commission,['role_id' => 4]);
+            $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'join','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' присоединился к комиссии.']);  
+        }
+        return redirect('commissions/'.$commission->id);
     }
 
-    public function leave($id)
+    public function leave($commission)
     {
-        $commission = Commission::findOrFail($id);
+        $commission = Commission::findOrFail($commission);
         Auth::user()->commissions_pivot()->detach($commission);
         $log = CommissionLog::create(['commission_id'=>$commission->id,'user_id'=>Auth::user()->id,'type'=>'leave','type_id'=>$commission->id,'text'=> Auth::user()->short_name().' покинул комиссию.']);
-        return redirect('commissions/'.$id);
+        return redirect('commissions/'.$commission->id);
     }
 
-    public function show($id)
+    public function show($commission)
     {
-        $commission = Commission::findOrFail($id);
+        if (Auth::user()->in_commission($commission) == 0) {return redirect('home');}
+        $commission = Commission::findOrFail($commission);
         return view('user.commissions.show', compact('commission'));
     }
 
     public function survey_show($commission, $survey)
     {
+        if (Auth::user()->in_commission($commission) == 0) {return redirect('home');}
         $commission = Commission::findOrFail($commission);
         $survey = Survey::findOrFail($survey);
         return view('user.commissions.survey_show', compact(['commission', 'survey']));
@@ -64,6 +69,7 @@ class UserCommissionController extends Controller
 
     public function task_show($commission, $task)
     {
+        if (Auth::user()->in_commission($commission) == 0) {return redirect('home');}
         $commission = Commission::findOrFail($commission);
         $task = Task::findOrFail($task);
         return view('user.commissions.task_show', compact(['commission', 'task']));
@@ -71,6 +77,7 @@ class UserCommissionController extends Controller
 
     public function test_show($commission, $test)
     {
+        if (Auth::user()->in_commission($commission) == 0) {return redirect('home');}
         $commission = Commission::findOrFail($commission);
         $test = Test::findOrFail($test);
         $attempts = Auth::user()->test_user_pivot()->where('test_id', '=', $test->id);

@@ -14,7 +14,7 @@ class AddUsersForeigns extends Migration
     {
         Schema::table('users', function($table)
         {
-          /*  $table->foreign('filial_id')
+            $table->foreign('filial_id')
                   ->references('id')
                   ->on('filials')
                   ->onDelete('set null');
@@ -22,7 +22,7 @@ class AddUsersForeigns extends Migration
             $table->foreign('job_id')
                   ->references('id')
                   ->on('jobs')
-                  ->onDelete('set null');      */
+                  ->onDelete('set null');      
         });
          
     }
@@ -34,6 +34,10 @@ class AddUsersForeigns extends Migration
      */
     public function down()
     {
-        //
+            $table->dropForeign('users_job_id_foreign');
+            $table->dropColumn('job_id');
+
+            $table->dropForeign('users_filial_id_foreign');
+            $table->dropColumn('filial_id');
     }
 }

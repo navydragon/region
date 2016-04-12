@@ -56,7 +56,7 @@
 																<td>{{$commission->title}}</td>
 																<td>{{$commission->get_status_name()}}</td>
 																<td>{{$commission->start_at->format("d.m.Y")}}-{{$commission->end_at->format("d.m.Y")}}</td>
-																<td>{{$commission->user_pivot()->where('role_id','=','2')->count()}}</td>
+																<td>{{$commission->user_pivot()->where('role_id','=','4')->count()}}</td>
 																<td>{{$commission->user_pivot()->where('role_id','=','3')->count()}}</td>
 																<td><a href="/admin/commissions_conduct/{{$commission->id}}" class="btn btn-default btn-xs btn-block">Просмотр</a></td>
 															</tr>

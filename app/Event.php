@@ -32,4 +32,9 @@ class Event extends Model
     	}
     	return (object)$e_d;
     }
+
+    public function participation()
+    {
+        # code...
+    }
 }

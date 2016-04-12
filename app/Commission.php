@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+
 class Commission extends Model
 {
     protected  $fillable = ['title','description','start_at','end_at','status'];
@@ -25,6 +26,11 @@ class Commission extends Model
     public function user_pivot()
     {
         return $this->belongsToMany('App\User', 'commission_user');
+    }
+
+    public function non_admin_users()
+    {
+        return  $this->belongsToMany('App\User', 'commission_user')->withPivot('role_id')->wherePivot('role_id','=','3')->orWherePivot('role_id','=','4')->get();
     }
 
     public function commission_stages()

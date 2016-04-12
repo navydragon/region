@@ -18,6 +18,18 @@ class CommissionLog extends Model
 			case 'leave':
     			return '<span class="label"><i class="fa fa-user-times size-20 color-red "></i></span>';
     			break;
+
+    		case 'survey':
+    			return '<span class="label"><i class="fa fa-edit size-20 color-blue "></i></span>';
+    			break;
+
+    		case 'user_task':
+    			return '<span class="label"><i class="fa fa-upload size-20 color-blue "></i></span>';
+    			break;	
+
+    		case 'test':
+    			return '<span class="label"><i class="fa fa-tasks size-20 color-blue "></i></span>';
+    			break;	
     		
     		default:
     			# code...

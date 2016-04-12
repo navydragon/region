@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Commission', 'commission_user')->withTimestamps();
     }
 
+    public function in_commission($commission)
+    {
+        return $this->belongsToMany('App\Commission', 'commission_user')->where('id','=',$commission)->get()->count();
+    }
+
     public function survey_questions_pivot()
     {
         return $this->belongsToMany('App\Survey_question', 'survey_question_user')->withPivot('answer')->withTimestamps();
@@ -74,9 +79,26 @@ class User extends Authenticatable
         return $this->surname." ".mb_substr($this->name,0,1,'UTF-8').". ".mb_substr($this->fathername,0,1,'UTF-8').".";
     }
 
+    public function full_name()
+    {
+        return $this->surname." ".$this->name." ".$this->fathername;
+    }
+
+    public function filial()
+    {
+        return $this->belongsTo('App\Filial');
+    }
+
+    public function job()
+    {
+        return $this->belongsTo('App\Job');
+    }
+
     public function is_admin()
     {
         if (($this->global_role_id == 2)||($this->global_role_id == 3)) {return true;}else{return false;}
     }
+
+
 }
 

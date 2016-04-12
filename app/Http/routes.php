@@ -62,6 +62,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 
 	Route::get('admin/commissions_conduct','CommissionsConductController@index');
 	Route::get('admin/commissions_conduct/{commission}','CommissionsConductController@show');
+	Route::get('admin/commissions_conduct/{commission}/change_role/{user}/{role}','CommissionsConductController@change_role');
 
 	Route::post('admin/files', 'FilesController@store'); 
 	Route::delete('admin/files/{file}', 'FilesController@destroy');
