@@ -13,10 +13,17 @@ class Task extends Model
     	return $this->belongsTo('App\User');
     }
 
-     public function find_in_file_binds()
+    public function find_in_file_binds()
     {
         
         $binds = File_bind::where('bind_type', '=', 'task')->where('type_id', '=',$this->id);
+        return $binds;
+    }
+
+    public function find_user_files()
+    {
+        
+        $binds = File_bind::where('bind_type', '=', 'user_task')->where('type_id', '=',$this->id);
         return $binds;
     }
 

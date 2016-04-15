@@ -33,6 +33,16 @@ class Commission extends Model
         return  $this->belongsToMany('App\User', 'commission_user')->withPivot('role_id')->wherePivot('role_id','=','3')->orWherePivot('role_id','=','4')->get();
     }
 
+    public function common_users()
+    {
+       return  $this->belongsToMany('App\User', 'commission_user')->withPivot('role_id')->wherePivot('role_id','=','4')->get();
+    }
+
+    public function expert_users()
+    {
+       return  $this->belongsToMany('App\User', 'commission_user')->withPivot('role_id')->wherePivot('role_id','=','3')->get();
+    }
+
     public function commission_stages()
     {
         return $this->hasMany('App\Commission_stage');

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Survey;
 use App\Task;
 use App\Test;
+use App\Commission_stage;
 class Event extends Model
 {
 	protected  $fillable = ['commission_stage_id','type','type_id',]; 
@@ -33,8 +34,44 @@ class Event extends Model
     	return (object)$e_d;
     }
 
-    public function participation()
+    public function participation($commission,$stage)
     {
-        # code...
+        $users = array_pluck(Commission::findOrFail($commission)->common_users(),'id');
+        switch ($this->type) {
+            case 'survey':
+                $survey = Survey::findOrFail($this->type_id);
+                $questions = array_pluck($survey->survey_questions()->get(),'id');
+                $parts = \DB::table('survey_question_user')
+                    ->whereIn('survey_question_id', $questions)
+                    ->whereIn('user_id', $users)
+                    ->groupBy('user_id')
+                    ->get();
+                break;
+
+            case 'test':
+                $test = Test::findOrFail($this->type_id);
+                $parts = \DB::table('test_users')
+                    ->where('test_id','=', $test->id)
+                    ->whereIn('user_id', $users)
+                    ->groupBy('user_id')
+                    ->get();
+                break;  
+
+            case 'task':
+                $task = Task::findOrFail($this->type_id);
+                $file_binds = array_pluck($task->find_user_files()->get(),'file_id');
+                $parts = \DB::table('files')
+                    ->whereIn('id', $file_binds)
+                    ->whereIn('user_id', $users)
+                    ->groupBy('user_id')
+                    ->get();
+                   // return count($file_binds);
+                break;       
+            
+            default:
+                return '-';
+                break;
+        }
+        return count($parts).'/'.count($users).' ('.(round(count($parts)/count($users)*100)).'%)';
     }
 }

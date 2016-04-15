@@ -54,7 +54,7 @@
 								<th>Филиал</th>
 								<th>Должность</th>
 								<th class="col-md-1">Роль</th>
-								<th class="col-md-2">Действия</th>
+								<th class="col-md-3">Действия</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,24 +65,24 @@
 									<td>{{$user->job->name}}</td>
 									<td>{{$commission_roles->find($user->pivot->role_id)->name}}</td>
 									<td >
-									    <button type="button" class="btn btn-primary btn-xs btn-block margin-left-0">Отчет</button>
-									  	
-										<div class="btn-group  btn-block">
-									    	<button type="button" class="btn btn-info btn-xs btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Роль <i class="caret"></i></button>
-									  		<ul class="dropdown-menu" role="menu">
-									  			@foreach ($commission_roles->where('id','!=','1')->orderby('id','desc')->get() as $role)
-												<li><a href="{{$commission->id}}/change_role/{{$user->id}}/{{$role->id}}">{{$role->name}}</a></li>
-												@endforeach
-									  		</ul>
-										</div>
-										
-										<div class="btn-group  btn-block">
-									    	<button type="button" class="btn btn-danger btn-xs btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Отклонить <span class="caret"></span></button>
-									  		<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Отклонить</a></li>
-												<li><a href="#">Отклонить и запретить</a></li>
-									  		</ul>
-										</div>
+									    	<button type="button" class="btn btn-info btn-xs margin-bottom-3">Подробнее</button>
+									    	<button type="button" class="btn btn-purple btn-xs margin-bottom-3">Оценить</button>
+									    	<div class="btn-group margin-bottom-3">
+										    	<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Роль <i class="caret"></i></button>
+										  		<ul class="dropdown-menu" role="menu">
+										  			@foreach ($commission_roles->where('id','!=','1')->orderby('id','desc')->get() as $role)
+													<li><a href="{{$commission->id}}/change_role/{{$user->id}}/{{$role->id}}">{{$role->name}}</a></li>
+													@endforeach
+										  		</ul>
+											</div>
+									    	
+									  		<div class="btn-group margin-bottom-3">
+										    	<button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Отклонить <span class="caret"></span></button>
+										  		<ul class="dropdown-menu" role="menu">
+													<li><a href="#">Отклонить</a></li>
+													<li><a href="#">Отклонить и запретить</a></li>
+										  		</ul>	
+									  		</div>
 									</td>
 								</tr>
 							@endforeach
@@ -96,7 +96,7 @@
 			<div id="ttab2_nobg" class="tab-pane active"> <!-- TAB 2 CONTENT -->
 				<div>
 					@foreach($commission->commission_stages as $stage)
-						<h4>{{$stage->title}} <a href="#" class="btn btn-xs btn-info pull-right">Отчет по этапу</a></h4>
+						<h4>{{$stage->title}} <a href="#" class="btn btn-xs btn-primary">Отчет по этапу</a></h4>
 						<table class="table table-striped table-hover table-bordered ">
 							<thead>
 								<tr>
@@ -111,8 +111,11 @@
 									<tr>
 										<td>{{$event->event_description()->title}}</td>
 										<td>{{$event->event_description()->type}}</td>
-										<td></td>
-										<td></td>
+										<td>{{$event->participation($commission->id,$stage->id)}}</td>
+										<td>
+											<a href="#" class="btn btn-info btn-xs margin-bottom-3">Подробнее</a>
+									    	<a href="#" class="btn btn-purple btn-xs margin-bottom-3">Оценить участников</a>
+									    </td>
 									</tr>
 								@endforeach
 							</tbody>
