@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 margin-top-10"><label>Укажите головной филиал или (если филиала нет в списке) введите его в поле справа</label></div>
+                                <div class="col-md-12 margin-top-10"><label>Укажите текущий головной филиал или (если филиала нет в списке) введите его в поле справа</label></div>
                                 <div class="row nomargin">
                                     <label class="select margin-bottom-10 col-md-6">
                                         <select name="filial" class="form-control select2">
@@ -119,7 +119,7 @@
                                     </label>
                                 </div>
 
-                                <div class="col-md-12"><label>Укажите должность или (если должности нет в списке) введите ее в поле справа</label></div>
+                                <div class="col-md-12"><label>Укажите текущую должность или (если должности нет в списке) введите ее в поле справа</label></div>
                                 <div class="row nomargin">
                                     <label class="select margin-bottom-10 col-md-6">
                                         <select name="job" class="form-control select2">

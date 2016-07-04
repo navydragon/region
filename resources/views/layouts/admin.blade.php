@@ -5,7 +5,7 @@
 		<title>Администрирование - @yield('title')</title>
 		<meta name="description" content="" />
 		<meta name="Author" content="Nikolay Grinchar" />
-
+		<meta name="csrf-token" content="{{ csrf_token() }}" />
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
@@ -19,6 +19,7 @@
 		<link href="{{ URL::asset('assets/css/essentials.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ URL::asset('assets/css/layout.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ URL::asset('assets/css/color_scheme/green.css') }}" rel="stylesheet" type="text/css" id="color_scheme" />
+
 
 	</head>
 	<!--
@@ -192,7 +193,13 @@
 		<script type="text/javascript">var plugin_path = '{{ URL::asset('assets/plugins') }}/';</script>
 		<script type="text/javascript" src="{{ URL::asset('assets/plugins/jquery/jquery-2.1.4.min.js') }}"></script>
 		<script type="text/javascript" src="{{ URL::asset('assets/js/app.js') }}"></script>
-		
-		
+		<script type="text/javascript">
+		    $.ajaxSetup({
+		        headers: {
+		            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		        }
+		    });
+		</script>
+		@yield('page_script')
 	</body>
 </html>

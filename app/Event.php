@@ -74,4 +74,43 @@ class Event extends Model
         }
         return count($parts).'/'.count($users).' ('.(round(count($parts)/count($users)*100)).'%)';
     }
+
+    public function stat_to_mark($user)
+    {
+        $res='-';
+        switch ($this->type) {
+            case 'survey':
+                $survey = Survey::findOrFail($this->type_id);
+                $questions = array_pluck($survey->survey_questions()->get(),'id');
+                $parts = \DB::table('survey_question_user')
+                    ->whereIn('survey_question_id', $questions)
+                    ->where('user_id', $user);
+                if($parts->count() > 0) {$res = '+';}
+            break;
+
+            case 'task':
+                $task = Task::findOrFail($this->type_id);
+                $file_binds = array_pluck($task->find_user_files()->get(),'file_id');
+                $parts = \DB::table('files')
+                    ->whereIn('id', $file_binds)
+                    ->where('user_id', $user);
+                if($parts->count() > 0) {$res = '+';}            
+            break;
+
+            case 'test':
+                $test = Test::findOrFail($this->type_id);
+                $parts = \DB::table('test_users')
+                    ->where('test_id','=', $test->id)
+                    ->where('user_id', $user)
+                    ->orderBy('earned', 'desc')
+                    ->first();
+                if($parts) {$res = round($parts->earned/$parts->total*100).'%';}  
+            break;
+            default:
+                return '-';
+                break;
+        }
+
+        return $res;
+    }
 }

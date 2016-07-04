@@ -113,8 +113,8 @@
 										<td>{{$event->event_description()->type}}</td>
 										<td>{{$event->participation($commission->id,$stage->id)}}</td>
 										<td>
-											<a href="#" class="btn btn-info btn-xs margin-bottom-3">Подробнее</a>
-									    	<a href="#" class="btn btn-purple btn-xs margin-bottom-3">Оценить участников</a>
+											<a href="/admin/commissions_conduct/{{$commission->id}}/details/{{$event->type}}s/{{$event->id}}" class="btn btn-info btn-xs margin-bottom-3">Подробнее</a>
+									    	<a href="/admin/commissions_conduct/{{$commission->id}}/marks/events/{{$event->id}}" class="btn btn-purple btn-xs margin-bottom-3">Оценить участников</a>
 									    </td>
 									</tr>
 								@endforeach

@@ -146,7 +146,7 @@
                                     <a href="#"><i class="fa fa-calendar"></i> Календарь</a>
                                 </li>
                                 <li><!-- settings -->
-                                    <a href="#"><i class="fa fa-cogs"></i> Профиль</a>
+                                    <a href="/profile/edit"><i class="fa fa-cogs"></i> Профиль</a>
                                 </li>
 
                                 <li class="divider"></li>
@@ -167,7 +167,7 @@
 
             <section class="page-header page-header-xs">
                 <div class="container">
-                   @yield('title')
+                 <h4 class="nomargin">  @yield('title') </h4>
                         @yield('breadcrumbs')
                 </div>
             </section>
@@ -177,11 +177,11 @@
 
 
             <!-- -->
-
+            <section>
                     <div class="container">
                     @yield('content')
                     </div>
-
+            </section>
             <!-- / -->
 
 

@@ -40,11 +40,31 @@ Route::group(['middleware' => ['web']], function ()
 Route::group(['middleware' => ['web','auth']], function () 
 {
 	Route::get('/home', 'HomeController@index');
+	
+	Route::get('/profile/edit', 'HomeController@edit_profile');
+
+	Route::get('commissions/{commission}/join','UserCommissionController@join');
+	Route::get('commissions/{commission}/leave','UserCommissionController@leave');
+	Route::get('commissions/{commission}','UserCommissionController@show');
+	Route::get('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_show');
+	Route::post('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_store');
+	Route::get('commissions/{commission}/tasks/{task}','UserCommissionController@task_show');
+	Route::get('commissions/{commission}/tests/{test}','UserCommissionController@test_show');
+	Route::post('commissions/{commission}/tests/{test}','UserCommissionController@test_store');
+	
+
+	Route::get('test_attempts/{test_attempt}','TestAttemptsController@show');
+});
+
+
+
+Route::group(['middleware' => ['web','auth','executive']], function () 
+{
 	Route::get('/admin', function () {return view('admin/index');});
 
 	Route::resource('admin/commissions','CommissionsController');
 	Route::resource('admin/commissions/conduct','CommissionsConductController');
-	
+
 	Route::resource('admin/surveys','SurveysController');
 	Route::resource('admin/tasks','TasksController');
 	Route::resource('admin/tests','TestsController');
@@ -64,6 +84,20 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::get('admin/commissions_conduct/{commission}','CommissionsConductController@show');
 	Route::get('admin/commissions_conduct/{commission}/change_role/{user}/{role}','CommissionsConductController@change_role');
 
+	Route::get('admin/commissions_conduct/{commission}/marks/events/{event}','CommissionsConductController@event_marks');
+	Route::post('admin/commissions_conduct/{commission}/marks/events/{event}','CommissionsConductController@event_marks_store');
+
+	Route::get('admin/commissions_conduct/{commission}/details/tests/{event}','CommissionsConductController@test_details');
+	Route::get('admin/commissions_conduct/{commission}/details/tasks/{event}','CommissionsConductController@task_details');
+	Route::get('admin/commissions_conduct/{commission}/details/surveys/{event}','CommissionsConductController@survey_details');
+
+	Route::get('admin/commissions_conduct/{commission}/details/tests/{event}/attempts/{attempt}','CommissionsConductController@test_attempt_details');
+
+	Route::get('admin/commissions_conduct/{commission}/export/events/tests/{event}','CommissionsExportController@export_test_event');
+	Route::get('admin/test_attempts/{attempt}/export','CommissionsExportController@export_test_attempt');
+
+	
+
 	Route::post('admin/files', 'FilesController@store'); 
 	Route::delete('admin/files/{file}', 'FilesController@destroy');
 
@@ -78,18 +112,4 @@ Route::group(['middleware' => ['web','auth']], function ()
 	Route::get('admin/answers/{answer}/edit','AnswersController@edit');
 	Route::patch('admin/answers/{answer}','AnswersController@update');
 
-	Route::get('commissions/{commission}/join','UserCommissionController@join');
-	Route::get('commissions/{commission}/leave','UserCommissionController@leave');
-	Route::get('commissions/{commission}','UserCommissionController@show');
-	Route::get('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_show');
-	Route::post('commissions/{commission}/surveys/{survey}','UserCommissionController@survey_store');
-	Route::get('commissions/{commission}/tasks/{task}','UserCommissionController@task_show');
-	Route::get('commissions/{commission}/tests/{test}','UserCommissionController@test_show');
-	Route::post('commissions/{commission}/tests/{test}','UserCommissionController@test_store');
-	
-
-	Route::get('test_attempts/{test_attempt}','TestAttemptsController@show');
-
-
 });
-

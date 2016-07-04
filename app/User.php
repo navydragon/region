@@ -99,6 +99,19 @@ class User extends Authenticatable
         if (($this->global_role_id == 2)||($this->global_role_id == 3)) {return true;}else{return false;}
     }
 
-
+    public function event_mark($event)
+    {
+        $mark = Event_mark::where('user_id','=', $this->id)->where('event_id','=',$event);
+        if ($mark->count() > 0 )
+        {
+            return $mark->first()->mark;
+        }else{
+            return '-';
+        }
+    }
+    public function test_attempts($test)
+    {
+        return Test_user::where('user_id','=', $this->id)->where('test_id','=',$test);
+    }
 }
 

@@ -39,4 +39,10 @@ class HomeController extends Controller
           }
         
     }
+
+    public function edit_profile()
+    {
+        $user = Auth::user();
+        return view('edit_profile',compact('user'));
+    }
 }

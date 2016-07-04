@@ -1,11 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title')
-<h4>Просмотр попытки тестирования </h4>
-@stop
-
-@section('breadcrumbs')
-<a href="{{ URL::previous()}}">Назад</a>
+<h4>Отчет о попытке тестирования</h4>
 @stop
 
 
@@ -13,11 +9,16 @@
 @section('content')
 	<section>
 		<div class="container">
+			<div style="margin-bottom:10px;">
+				<a target="_self" href="/admin/tests/{{$attempt->test_id}}test_attempts/{{$attempt->id}}/export" class="btn btn-primary">Экспорт в Word</a>
+			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="nomargin">Общая информация:</h4>
 				</div>
+				
 				<div class="panel-body">
+					<p class="nomargin"><strong>Пользователь: </strong><span>{{$user->full_name()}}</span></p>
 					<p class="nomargin"><strong>Тест: </strong><span>{{$xml->test}}</span></p>
 					<p class="nomargin"><strong>Дата и время прохождения: </strong><span>{{$xml->datetime}}</span></p>
 					<p class="nomargin"><strong>Результат, баллов: </strong>{{$xml->earned}}/{{$xml->total}}</p>
