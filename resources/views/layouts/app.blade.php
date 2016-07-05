@@ -146,12 +146,12 @@
                                     <a href="#"><i class="fa fa-calendar"></i> Календарь</a>
                                 </li>
                                 <li><!-- settings -->
-                                    <a href="/profile/edit"><i class="fa fa-cogs"></i> Профиль</a>
+                                    <a href="/profile"><i class="fa fa-cogs"></i> Профиль</a>
                                 </li>
 
                                 <li class="divider"></li>
                                 <li><!-- logout -->
-                                    <a href="http://region/logout"><i class="fa fa-power-off"></i> Выйти </a>
+                                    <a href="/logout"><i class="fa fa-power-off"></i> Выйти </a>
                                 </li>
                             </ul>
                         </li>
@@ -179,6 +179,7 @@
             <!-- -->
             <section>
                     <div class="container">
+                    @include('flash::message')
                     @yield('content')
                     </div>
             </section>

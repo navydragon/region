@@ -23,31 +23,31 @@
 
         <!-- PERSONAL INFO TAB -->
         <div class="tab-pane fade in active" id="info">
-            <form role="form" action="#" method="post">
+            <form role="form" action="/profile/pers_data" method="patch">
                 <div class="form-group">
                     <label class="control-label">Фамилия</label>
-                    <input type="text" placeholder="{{Auth::user()->surname}}" class="form-control">
+                    <input type="text" name="surname" id="surname" placeholder="{{Auth::user()->surname}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Имя</label>
-                    <input type="text" placeholder="{{Auth::user()->name}}" class="form-control">
+                    <input type="text" name="name" id="name" placeholder="{{Auth::user()->name}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Отчество</label>
-                    <input type="text" placeholder="{{Auth::user()->fathername}}" class="form-control">
+                    <input type="text" name="fathername" id="fathername" placeholder="{{Auth::user()->fathername}}" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">E-mail (логин)</label>
-                    <input type="text" placeholder="{{Auth::user()->email}}" class="form-control">
+                    <input type="text" name="email" id="email" placeholder="{{Auth::user()->email}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Телефон</label>
-                    <input type="text" placeholder="{{Auth::user()->phone}}" class="form-control">
+                    <input type="text" name="phone" id="phone" placeholder="{{Auth::user()->phone}}" class="form-control">
                 </div>
                 <div class="form-group">
                    <label class="control-label">Филиал</label>
-                        <select name="filial" class="form-control select2">
+                        <select name="filial" id="filial" class="form-control select2">
                             <option value="0" selected>Выберите филиал...</option>
                             @foreach ($filials->get() as $filial)
                                 <option value="{{ $filial->id }}" {!! (old('filial') == $filial->id)||(Auth::user()->filial_id == $filial->id) ? 'selected="selected"' : '' !!}>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                    <label class="control-label">Должность</label>
-                    <select name="job" class="form-control select2">
+                    <select name="job" id="job" class="form-control select2">
                         <option value="0" selected>Выберите должность...</option>
                         @foreach ($jobs->get() as $job)
                             <option value="{{ $job->id }}" {!! (old('job') == $job->id)||(Auth::user()->job_id == $job->id) ? 'selected="selected"' : '' !!}>
@@ -68,7 +68,7 @@
                     </select>
                 </div>
                 <div class="margiv-top10">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Сохранить изменения </a>
+                    <a href="#" onclick="" class="btn btn-primary"><i class="fa fa-check"></i> Сохранить изменения </a>
                     <a href="#" class="btn btn-default">Отмена </a>
                 </div>
             </form>

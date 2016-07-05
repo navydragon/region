@@ -41,7 +41,12 @@ Route::group(['middleware' => ['web','auth']], function ()
 {
 	Route::get('/home', 'HomeController@index');
 	
-	Route::get('/profile/edit', 'HomeController@edit_profile');
+	Route::get('/profile', 'HomeController@profile_show');
+	Route::patch('/profile/pers_data', 'HomeController@profile_pers_data_update');
+	Route::patch('/profile/photo', 'HomeController@profile_photo_update');
+	Route::delete('/profile/photo', 'HomeController@profile_photo_destroy');
+	Route::patch('/profile/password', 'HomeController@profile_password_update');
+	Route::patch('/profile/other', 'HomeController@profile_other_update');
 
 	Route::get('commissions/{commission}/join','UserCommissionController@join');
 	Route::get('commissions/{commission}/leave','UserCommissionController@leave');

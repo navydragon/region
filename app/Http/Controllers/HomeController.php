@@ -40,7 +40,7 @@ class HomeController extends Controller
         
     }
 
-    public function edit_profile()
+    public function profile_show()
     {
         $user = Auth::user();
         return view('edit_profile',compact('user'));
