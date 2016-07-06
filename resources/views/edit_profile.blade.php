@@ -23,32 +23,31 @@
 
         <!-- PERSONAL INFO TAB -->
         <div class="tab-pane fade in active" id="info">
-            <form role="form" action="/profile/pers_data" method="patch">
+            {!! Form::model(Auth::user(), ['method' => 'PATCH','url' => '/profile/pers_data']) !!}
                 <div class="form-group">
                     <label class="control-label">Фамилия</label>
-                    <input type="text" name="surname" id="surname" placeholder="{{Auth::user()->surname}}" class="form-control">
+                    <input type="text" name="surname" id="surname" value="{{old('surname') ? old('surname') : Auth::user()->surname}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Имя</label>
-                    <input type="text" name="name" id="name" placeholder="{{Auth::user()->name}}" class="form-control">
+                    <input type="text" name="name" id="name" value="{{old('name') ? old('name') : Auth::user()->name}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Отчество</label>
-                    <input type="text" name="fathername" id="fathername" placeholder="{{Auth::user()->fathername}}" class="form-control">
+                    <input type="text" name="fathername" id="fathername" value="{{old('fathername') ? old('fathername') : Auth::user()->fathername}}" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">E-mail (логин)</label>
-                    <input type="text" name="email" id="email" placeholder="{{Auth::user()->email}}" class="form-control">
+                    <input type="text" name="email" id="email" value="{{old('email') ? old('email') : Auth::user()->email}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Телефон</label>
-                    <input type="text" name="phone" id="phone" placeholder="{{Auth::user()->phone}}" class="form-control">
+                    <input type="text" name="phone" id="phone" value="{{old('phone') ? old('phone') : Auth::user()->phone}}" class="form-control">
                 </div>
                 <div class="form-group">
                    <label class="control-label">Филиал</label>
                         <select name="filial" id="filial" class="form-control select2">
-                            <option value="0" selected>Выберите филиал...</option>
                             @foreach ($filials->get() as $filial)
                                 <option value="{{ $filial->id }}" {!! (old('filial') == $filial->id)||(Auth::user()->filial_id == $filial->id) ? 'selected="selected"' : '' !!}>
                                     {{ $filial->name }}
@@ -59,7 +58,6 @@
                 <div class="form-group">
                    <label class="control-label">Должность</label>
                     <select name="job" id="job" class="form-control select2">
-                        <option value="0" selected>Выберите должность...</option>
                         @foreach ($jobs->get() as $job)
                             <option value="{{ $job->id }}" {!! (old('job') == $job->id)||(Auth::user()->job_id == $job->id) ? 'selected="selected"' : '' !!}>
                                 {{ $job->name }}
@@ -68,17 +66,17 @@
                     </select>
                 </div>
                 <div class="margiv-top10">
-                    <a href="#" onclick="" class="btn btn-primary"><i class="fa fa-check"></i> Сохранить изменения </a>
+                    {!! Form::submit('Сохранить изменения', ['class' => 'btn btn-primary']) !!}
                     <a href="#" class="btn btn-default">Отмена </a>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
         <!-- /PERSONAL INFO TAB -->
 
         <!-- AVATAR TAB -->
         <div class="tab-pane fade" id="avatar">
 
-            <form class="clearfix" action="#" method="post" enctype="multipart/form-data">
+            {!! Form::model(Auth::user(), ['method' => 'PATCH','url' => '/profile/photo', 'files' => true]) !!}
                 <div class="form-group">
 
                     <div class="row">
@@ -86,7 +84,7 @@
                         <div class="col-md-3 col-sm-4">
 
                             <div class="thumbnail">
-                                <img class="img-responsive" src="assets/images/demo/people/460x700/8-min.jpg" alt="" />
+                                <img class="img-responsive" src="assets/images/avatars/noavatar.jpg" alt="" />
                             </div>
 
                         </div>
@@ -97,7 +95,7 @@
                                 <label class="label">Выберите файл</label>
                                 <label for="file" class="input input-file">
                                     <div class="button">
-                                        <input type="file" id="file" accept="image/*" onchange="this.parentNode.nextSibling.value = this.value">Выбрать
+                                        <input type="file" id="avatar_url" name="avatar_url" accept="image/*" onchange="this.parentNode.nextSibling.value = this.value">Выбрать
                                     </div><input type="text" readonly>
                                 </label>
                             </div>
@@ -118,11 +116,11 @@
                 </div>
 
                 <div class="margiv-top10">
-                    <a href="#" class="btn btn-primary">Save Changes </a>
-                    <a href="#" class="btn btn-default">Cancel </a>
+                    {!! Form::submit('Сохранить изменения', ['class' => 'btn btn-primary']) !!}
+                    <a href="#" class="btn btn-default">Отмена </a>
                 </div>
 
-            </form>
+            {!! Form::close() !!}
 
         </div>
         <!-- /AVATAR TAB -->
@@ -226,8 +224,8 @@
 
     <div class="thumbnail text-center">
         <img src="assets/images/demo/people/460x700/8-min.jpg" alt="" />
-        <h2 class="size-18 margin-top-10 margin-bottom-0">Felica Doe</h2>
-        <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">DEVELOPER</h3>
+        <h2 class="size-18 margin-top-10 margin-bottom-0">{{Auth::user()->full_name()}}</h2>
+        <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{Auth::user()->job->name}}</h3>
     </div>
 
     <!-- completed -->

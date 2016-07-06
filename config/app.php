@@ -160,6 +160,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Laracasts\Generators\GeneratorsServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -210,6 +211,7 @@ return [
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'Activity'  => Spatie\Activitylog\ActivitylogFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

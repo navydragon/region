@@ -180,6 +180,7 @@
             <section>
                     <div class="container">
                     @include('flash::message')
+                    @include('errors.list')
                     @yield('content')
                     </div>
             </section>
