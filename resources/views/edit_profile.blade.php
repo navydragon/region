@@ -84,7 +84,7 @@
                         <div class="col-md-3 col-sm-4">
 
                             <div class="thumbnail">
-                                <img class="img-responsive" src="assets/images/avatars/noavatar.jpg" alt="" />
+                                <img class="img-responsive" src="{{Auth::user()->avatar_url=='' ? "uploads/avatars/noavatar.jpg" : '/uploads/avatars/'.Auth::user()->email.'/'.Auth::user()->avatar_url }}" alt="" />
                             </div>
 
                         </div>
@@ -127,28 +127,23 @@
 
         <!-- PASSWORD TAB -->
         <div class="tab-pane fade" id="password">
-
-            <form action="#" method="post">
-
-                <div class="form-group">
-                    <label class="control-label">Текущий пароль</label>
-                    <input type="password" class="form-control">
-                </div>
+            <h4>Изменение пароля</h4>
+            {!! Form::model(Auth::user(), ['method' => 'PATCH','url' => '/profile/password']) !!}
                 <div class="form-group">
                     <label class="control-label">Новый пароль</label>
-                    <input type="password" class="form-control">
+                     <input type="password" class="form-control" name="password">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Повторите новый пароль</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" name="password_confirmation">
                 </div>
 
                 <div class="margiv-top10">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Изменить пароль</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Изменить пароль</button>
                     <a href="#" class="btn btn-default">Отмена </a>
                 </div>
 
-            </form>
+            {!! Form::close() !!}
 
         </div>
         <!-- /PASSWORD TAB -->
@@ -223,9 +218,10 @@
 <div class="col-lg-3 col-md-3 col-sm-4 col-lg-pull-9 col-md-pull-9 col-sm-pull-8">
 
     <div class="thumbnail text-center">
-        <img src="assets/images/demo/people/460x700/8-min.jpg" alt="" />
+        <img src="{{Auth::user()->avatar_url=='' ? "uploads/avatars/noavatar.jpg" : '/uploads/avatars/'.Auth::user()->email.'/'.Auth::user()->avatar_url }}" alt="" />
         <h2 class="size-18 margin-top-10 margin-bottom-0">{{Auth::user()->full_name()}}</h2>
-        <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{Auth::user()->job->name}}</h3>
+        <h3 class="size-11 margin-top-0 margin-bottom-0 text-muted">{{Auth::user()->job->name}}</h3>
+        <h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">{{Auth::user()->filial->name}}</h3>
     </div>
 
     <!-- completed -->
@@ -239,24 +235,12 @@
 
     <!-- SIDE NAV -->
     <ul class="side-nav list-group margin-bottom-60" id="sidebar-nav">
-        <li class="list-group-item"><a href="page-profile.html"><i class="fa fa-eye"></i> PROFILE</a></li>
-        <li class="list-group-item"><a href="page-profile-projects.html"><i class="fa fa-tasks"></i> PROJECTS</a></li>
-        <li class="list-group-item"><a href="page-profile-comments.html"><i class="fa fa-comments-o"></i> COMMENTS</a></li>
+        <li class="list-group-item"><a href="/profile"><i class="fa fa-eye"></i> ПРОФИЛЬ</a></li>
+        <li class="list-group-item"><a href="page-profile-projects.html"><i class="fa fa-tasks"></i> ТЕСТИРОВАНИЯ</a></li>
+        <li class="list-group-item"><a href="page-profile-comments.html"><i class="fa fa-file"></i> ФАЙЛЫ</a></li>
         <li class="list-group-item"><a href="page-profile-history.html"><i class="fa fa-history"></i> HISTORY</a></li>
         <li class="list-group-item active"><a href="page-profile-settings.html"><i class="fa fa-gears"></i> SETTINGS</a></li>
 
-        <li class="list-group-item list-toggle">   <!-- NOTE: "active" to be open on page load -->                
-            <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-1">DROPDOWN EXAMPLE</a>
-            <ul id="collapse-1" class="collapse"><!-- NOTE: "collapse in" to be open on page load -->
-                <li><a href="#"><i class="fa fa-angle-right"></i> SUMBENU 1</a></li>
-                <li>
-                    <span class="badge badge-red">New</span>
-                    <a href="#"><i class="fa fa-angle-right"></i> SUMBENU 2</a>
-                </li>
-                <li class="active"><a href="#"><i class="fa fa-angle-right"></i> SUMBENU 3</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> SUMBENU 4</a></li>
-            </ul>
-        </li>
     </ul>
     <!-- /SIDE NAV -->
 

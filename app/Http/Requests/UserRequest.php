@@ -28,6 +28,7 @@ class UserRequest extends Request
             'name' => 'sometimes|required',
             'email' => 'sometimes|required|email|unique:users,email,'.Auth::user()->id,
             'avatar_url' =>'sometimes|mimes:jpeg,jpg,png,gif|required|max:10000',
+            'password' =>'sometimes|confirmed',
         ];
     }
 

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Image;
 
+
+
 class HomeController extends Controller
 {
     /**
@@ -34,6 +36,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
+
          if (Auth::check())
          {
             return redirect('home');
@@ -58,11 +61,23 @@ class HomeController extends Controller
 
     public function profile_photo_update(UserRequest $request)
     {
+        $file_path = public_path() .'/uploads/avatars/'.Auth::user()->email;
         $file_name = $request['avatar_url']->GetClientOriginalName();
         $image = Image::make($request['avatar_url']->GetRealPath());
         $image->crop(250,250);
-        $image->save('assets/images/avatars/'.$file_name);
+        $image->save($file_path.'/'.$file_name);
+        Auth::user()->avatar_url = $file_name;
+        Auth::user()->save();
         flash()->success('Фотография успешно изменена!');
+        return back();
+    }
+
+    public function profile_password_update(UserRequest $request)
+    {
+        
+        Auth::user()->password = bcrypt($request->password);
+        Auth::user()->save();
+        flash()->success('Пароль успешно изменен!');
         return back();
     }
 }
