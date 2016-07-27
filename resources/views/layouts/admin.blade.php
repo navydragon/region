@@ -87,12 +87,7 @@
 								<span class="label label-warning pull-right">2</span> <span>Calendar</span>
 							</a>
 						</li>
-						<li>
-							<a href="../../HTML/start.html">
-								<i class="main-icon fa fa-link"></i>
-								<span class="label label-danger pull-right">PRO</span> <span>Frontend</span>
-							</a>
-						</li>
+						
 					</ul>
 
 				</nav>

@@ -74,6 +74,7 @@ class User extends Authenticatable
         return $this->hasManyThrough('App\File_bind','App\File')->where('bind_type','=',$type);
     }
 
+    
     public function short_name()
     {
         return $this->surname." ".mb_substr($this->name,0,1,'UTF-8').". ".mb_substr($this->fathername,0,1,'UTF-8').".";

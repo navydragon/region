@@ -18,9 +18,9 @@ class Survey_question extends Model
         return $this->belongsToMany('App\User', 'survey_question_user')->withPivot('answer')->withTimestamps();
     }
 
-    public function user_answer()
+    public function user_answer($user_id)
     {
-    	$a = $this->users_pivot()->find(Auth::user()->id);
+    	$a = $this->users_pivot()->find($user_id);
     	if ($a) 
     	{
     		return $a->pivot->answer;

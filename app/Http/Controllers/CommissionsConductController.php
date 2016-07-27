@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Commission;
 use App\Event;
+use App\Survey;
 use App\CommissionLog;
 use App\User;
 use App\CommissionRole;
@@ -81,5 +82,28 @@ class CommissionsConductController extends Controller
             exit('Не удалось открыть файл с данными о попытке.');
         }
         return view('commissions.conduct.test_attempt_details', compact(['commission', 'event','attempt','xml','user']));
+    }
+
+    public function task_details ($commission, $event)
+    {
+        $commission = Commission::findOrFail($commission);
+        $event = Event::findOrFail($event);
+        return view('commissions.conduct.task_details', compact(['commission', 'event']));
+    }
+
+    public function survey_details($commission, $event)
+    {
+        $commission = Commission::findOrFail($commission);
+        $event = Event::findOrFail($event);
+        return view('commissions.conduct.survey_details', compact(['commission', 'event']));
+    }
+
+    public function survey_user_details($commission,$event,$user)
+    {
+        $commission = Commission::findOrFail($commission);
+        $event = Event::findOrFail($event);
+        $user = User::findOrFail($user);
+        $survey = Survey::findOrFail($event->type_id);
+        return view('commissions.conduct.survey_user_details', compact(['commission', 'event','survey','user']));
     }
 }

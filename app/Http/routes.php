@@ -59,6 +59,9 @@ Route::group(['middleware' => ['web','auth']], function ()
 	
 
 	Route::get('test_attempts/{test_attempt}','TestAttemptsController@show');
+
+		Route::post('admin/files', 'FilesController@store'); 
+	Route::delete('admin/files/{file}', 'FilesController@destroy');
 });
 
 
@@ -97,14 +100,14 @@ Route::group(['middleware' => ['web','auth','executive']], function ()
 	Route::get('admin/commissions_conduct/{commission}/details/surveys/{event}','CommissionsConductController@survey_details');
 
 	Route::get('admin/commissions_conduct/{commission}/details/tests/{event}/attempts/{attempt}','CommissionsConductController@test_attempt_details');
+	Route::get('/admin/commissions_conduct/{commission}/details/surveys/{event}/{user}','CommissionsConductController@survey_user_details');
 
 	Route::get('admin/commissions_conduct/{commission}/export/events/tests/{event}','CommissionsExportController@export_test_event');
 	Route::get('admin/test_attempts/{attempt}/export','CommissionsExportController@export_test_attempt');
 
 	
 
-	Route::post('admin/files', 'FilesController@store'); 
-	Route::delete('admin/files/{file}', 'FilesController@destroy');
+
 
 	Route::get('admin/tests/{test}/questions/create','QuestionsController@create');
 	Route::get('admin/tests/{test}/questions/{question}','QuestionsController@edit');

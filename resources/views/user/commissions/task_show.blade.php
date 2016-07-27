@@ -16,7 +16,7 @@
 			<ul class="list-group">
 				@foreach($task->find_in_file_binds()->get() as $file_bind)
 					<li class="list-group-item">
-						<a href="#" target="_blank">{{$file_bind->file->title}}</a>
+						<a href="/{{$file_bind->file->path}}" target="_blank">{{$file_bind->file->title}}</a>
 					</li>
 				@endforeach
 			</ul>

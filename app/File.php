@@ -45,4 +45,37 @@ class File extends Model
     {
         return $this->hasMany('App\File_bind');
     }
+
+    public function thumbnail()
+    {
+    	switch ($this->type) {
+    		case 'xls':
+    		case 'xlsx':
+    			return "<i class='fa fa-file-excel-o'></i>";
+    			break;
+    		
+    		case 'doc':
+    		case 'docx':
+    			return "<i class='fa fa-file-word-o'></i>";
+    			break;
+
+    		case 'png':
+   			case 'gif':
+   			case 'jpeg':
+   			case 'jpg':
+    			return "<i class='fa fa-file-image-o'></i>";
+    			break;
+
+    		case 'zip':
+    		case 'rar':
+    			return "<i class='fa fa-file-archive-o'></i>";
+    			break;
+    		case 'pdf':
+    			return "<i class='fa fa-file-pdf-o'></i>";
+    			break;
+    		default:
+    			return "<i class='fa fa-file'></i>";
+    			break;
+    	}
+    }
 }

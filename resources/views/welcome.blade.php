@@ -39,70 +39,7 @@
                         <hr />
                     </header>
 
-                    <!-- FEATURED BOXES 3 -->
-                    <div class="row">
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-circle-compass"></i>
-                                <h4>Pixel Perfect</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-piechart"></i>
-                                <h4>Graphs</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-strategy"></i>
-                                <h4>Startegy</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-streetsign"></i>
-                                <h4>SEO Optimized</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /FEATURED BOXES 3 -->
-
-                    <!-- FEATURED BOXES 3 -->
-                    <div class="row">
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-trophy"></i>
-                                <h4>Winners</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-gears"></i>
-                                <h4>Responsive</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-tools"></i>
-                                <h4>Costomizable</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="text-center">
-                                <i class="ico-light ico-lg ico-rounded ico-hover et-layers"></i>
-                                <h4>Easy to Modify</h4>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus. </p>
-                            </div>
-                        </div>
-                    </div>
+              
                     <!-- /FEATURED BOXES 3 -->
 
                 </div>
